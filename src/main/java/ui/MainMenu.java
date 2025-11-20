@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -53,18 +52,18 @@ public class MainMenu extends JFrame {
     }
 
     private void styleButton(JButton btn, Color bgColor) {
-    btn.setBackground(bgColor);
-    btn.setForeground(Color.WHITE); // Fehér szöveg
-    btn.setFocusPainted(false); // A kattintáskori idegesítő keret eltüntetése
-    btn.setFont(new Font("Segoe UI", Font.BOLD, 16)); // Modern, olvasható betűtípus
-    btn.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // Szellős belső margó, keret nélkül
-    
-    // Kéz kurzor, ha fölé viszed az egeret
-    btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    
-    // Opcionális: Ha azt akarod, hogy teljesen "lapos" legyen és ne legyen 3D hatása
-    // (Ez operációs rendszertől függően változhat, de általában segít):
-    btn.setContentAreaFilled(false);
-    btn.setOpaque(true);
-}
+        btn.setBackground(bgColor);
+        btn.setForeground(Color.WHITE); // Fehér szöveg
+        btn.setFocusPainted(false); // A kattintáskori idegesítő keret eltüntetése
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 16)); // Modern, olvasható betűtípus
+        btn.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25)); // Szellős belső margó, keret nélkül
+        
+        // Kéz kurzor, ha fölé viszed az egeret
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+        // Opcionális: Ha azt akarod, hogy teljesen "lapos" legyen és ne legyen 3D hatása
+        // (Ez operációs rendszertől függően változhat, de általában segít):
+        btn.setContentAreaFilled(false);
+        btn.setOpaque(true);
+    }
 }

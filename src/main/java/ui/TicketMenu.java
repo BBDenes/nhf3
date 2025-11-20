@@ -1,6 +1,9 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import java.awt.*;
 import train.*;
 
@@ -12,59 +15,77 @@ public class TicketMenu extends JDialog {
     private JSpinner darabSpinner;
     private TrainHandler trainHandler; // Ha szükség van az adatokra
 
+
+
     // A konstruktorban kérjük el a szülő ablakot (parent) és az adatokat (th)
     public TicketMenu(JFrame parent, TrainHandler th) {
-        super(parent, "Jegyvásárlás", true); // true = MODÁLIS (blokkolja a szülőt)
+        super(parent, "Jegyvásárlás", true);
         this.trainHandler = th;
-        
-        this.setSize(400, 300);
-        this.setLocationRelativeTo(parent); // A szülőhöz képest középre
-        this.setLayout(new GridBagLayout());
-        
+
+        // Ablak alapok
+        setSize(450, 400);
+        setLocationRelativeTo(parent);
+        setResizable(false); // Fix méretű ablak, gyakran elegánsabb dialogoknál
+
+        // Fő panel létrehozása
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        mainPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
+        mainPanel.setBorder(new EmptyBorder(25, 25, 25, 25)); // Nagy belső margó az ablak szélétől
+
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(10, 10, 10, 10); // Elemek közötti távolság
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // --- 1. HONNAN ---
-        gbc.gridx = 0; gbc.gridy = 0;
-        this.add(new JLabel("Honnan:"), gbc);
+        JLabel titleLabel = new JLabel("Új jegy vásárlása");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        titleLabel.setForeground(ModernComponents.TEXT_COLOR);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        gbc.gridx = 0; gbc.gridy = 0; 
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(0, 0, 20, 0); 
+        mainPanel.add(titleLabel, gbc);
 
-        gbc.gridx = 1;
-        String[] allomasok = {"Budapest", "Debrecen", "Szeged", "Pécs"}; 
+        gbc.gridwidth = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        gbc.gridx = 0; gbc.gridy = 1; gbc.weightx = 0.3;
+        mainPanel.add(ModernComponents.createStyledLabel("Honnan:"), gbc);
+
+        gbc.gridx = 1; gbc.weightx = 0.7;
+        String[] allomasok = {"Budapest", "Debrecen", "Szeged", "Pécs", "Győr"};
         honnanBox = new JComboBox<>(allomasok);
-        this.add(honnanBox, gbc);
+        honnanBox.setEditable(true);
+        //TODO: Kiegészítés
+        ModernComponents.styleComponent(honnanBox);
+        mainPanel.add(honnanBox, gbc);
 
-        gbc.gridx = 0; gbc.gridy = 1;
-        this.add(new JLabel("Hova:"), gbc);
+        gbc.gridx = 0; gbc.gridy = 2; gbc.weightx = 0.3;
+        mainPanel.add(ModernComponents.createStyledLabel("Hova:"), gbc);
 
-        gbc.gridx = 1;
+        gbc.gridx = 1; gbc.weightx = 0.7;
         hovaBox = new JComboBox<>(allomasok);
-        this.add(hovaBox, gbc);
-
-        gbc.gridx = 0; gbc.gridy = 2;
-        this.add(new JLabel("Utasok száma:"), gbc);
-
-        gbc.gridx = 1;
-        SpinnerModel model = new SpinnerNumberModel(1, 1, 100, 1);
-        darabSpinner = new JSpinner(model);
-        this.add(darabSpinner, gbc);
-
-        // --- 4. VÁSÁRLÁS GOMB ---
-        gbc.gridx = 0; gbc.gridy = 3;
-        gbc.gridwidth = 2; // Két oszlopot foglaljon el
-        JButton vasarlasGomb = new JButton("Vásárlás");
+        ModernComponents.styleComponent(hovaBox); // Alapértelmezett érték módosítása, hogy ne ugyanaz legyen
+        if (hovaBox.getItemCount() > 1) hovaBox.setSelectedIndex(1); 
+        mainPanel.add(hovaBox, gbc);
         
-        vasarlasGomb.addActionListener(e -> {
-            vasarlasFeldolgozasa();
-        });
+
+        gbc.gridx = 0; gbc.gridy = 4; 
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(30, 10, 10, 10); // Nagyobb hely a gomb felett
         
-        this.add(vasarlasGomb, gbc);
+        JButton buyButton = ModernComponents.createModernButton("Keresés!", ModernComponents.BUTTON_COLOR, Color.WHITE);
+        
+        buyButton.addActionListener(e -> processPurchase());
+        
+        mainPanel.add(buyButton, gbc);
+
+        this.add(mainPanel);
     }
 
-    private void vasarlasFeldolgozasa() {
+    private void processPurchase() {
         String honnan = (String) honnanBox.getSelectedItem();
         String hova = (String) hovaBox.getSelectedItem();
-        int darab = (Integer) darabSpinner.getValue();
 
         if(honnan.equals(hova)) {
             JOptionPane.showMessageDialog(this, "A kiindulás és cél nem lehet ugyanaz!", "Hiba", JOptionPane.ERROR_MESSAGE);
@@ -72,9 +93,14 @@ public class TicketMenu extends JDialog {
         }
 
         // ITT TÖRTÉNIK A VÁSÁRLÁS LOGIKA (pl. TrainHandler hívása)
-        System.out.println("Vásárlás: " + honnan + " -> " + hova + ", " + darab + " fő.");
+        System.out.println("Vásárlás: " + honnan + " -> " + hova);
         
         // Bezárjuk az ablakot sikeres vásárlás után
         dispose(); 
     }
+
+
+   
+
+    
 }

@@ -1,0 +1,18 @@
+# Sample .gitignore for Java projects
+.idea/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+/DubboProvider/*
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Logs
+*.log
