@@ -1,12 +1,19 @@
 package utilities;
 
+import java.awt.List;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Time implements Comparable<Time>, Serializable{
     int hour, minute;
     public Time(int h, int m){
         this.hour = h;
         this.minute = m;
+    }
+    public Time(String t){
+        String[] split = t.split(":");
+        this.hour = Integer.parseInt(split[0]);
+        this.minute = Integer.parseInt(split[1]);
     }
 
     public int getHour(){return hour;}

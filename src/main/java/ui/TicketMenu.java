@@ -6,7 +6,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import train.*;
 
-// JDialog-ból származtatjuk, mert ez egy "felugró" ablak lesz
 public class TicketMenu extends JDialog {
 
     private JComboBox<String> honnanBox;
@@ -15,7 +14,6 @@ public class TicketMenu extends JDialog {
 
 
 
-    // A konstruktorban kérjük el a szülő ablakot (parent) és az adatokat (th)
     public TicketMenu(JFrame parent, TrainHandler th) {
         super(parent, "Jegyvásárlás", true);
         this.trainHandler = th;
@@ -23,7 +21,7 @@ public class TicketMenu extends JDialog {
         // Ablak alapok
         setSize(450, 400);
         setLocationRelativeTo(parent);
-        setResizable(false); // Fix méretű ablak, gyakran elegánsabb dialogoknál
+        setResizable(false); 
 
         // Fő panel létrehozása
         JPanel mainPanel = new JPanel(new GridBagLayout());
@@ -48,7 +46,7 @@ public class TicketMenu extends JDialog {
         gbc.insets = new Insets(10, 10, 10, 10);
 
         gbc.gridx = 0; gbc.gridy = 1; gbc.weightx = 0.3;
-        mainPanel.add(ModernComponents.createStyledLabel("Honnan:"), gbc);
+        mainPanel.add(ModernComponents.createStyledLabel("Honnan:", 14), gbc);
 
         gbc.gridx = 1; gbc.weightx = 0.7;
         String[] allomasok = {"Budapest", "Debrecen", "Szeged", "Pécs", "Győr"};
@@ -59,7 +57,7 @@ public class TicketMenu extends JDialog {
         mainPanel.add(honnanBox, gbc);
 
         gbc.gridx = 0; gbc.gridy = 2; gbc.weightx = 0.3;
-        mainPanel.add(ModernComponents.createStyledLabel("Hova:"), gbc);
+        mainPanel.add(ModernComponents.createStyledLabel("Hova:", 14), gbc);
 
         gbc.gridx = 1; gbc.weightx = 0.7;
         hovaBox = new JComboBox<>(allomasok);

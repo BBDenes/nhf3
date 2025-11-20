@@ -1,6 +1,5 @@
 package train;
 
-import java.security.InvalidParameterException;
 import java.util.List;
 
 public class Train {
@@ -60,5 +59,14 @@ public class Train {
     public String toString() {
         return id + " " + name + " "+ type + "- Kocsik: " + coaches.toString() + ", Megállók: " + stops.toString();
     }
+
+    public Stop getStopByName(String stationName) {
+    for (Stop s : this.stops) {
+        if (s.getName().equalsIgnoreCase(stationName)) {
+            return s;
+        }
+    }
+    return null; 
+}
 
 }

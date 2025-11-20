@@ -11,12 +11,18 @@ public class TrainHandler {
     }
 
     public void readTrains(String path){
+        //TODO: fájlbeolvasás
         if(path == null){
-            //TODO: Beolvasó ablak
+            
             System.out.println("No trains added.");
         }
         this.trains.add(new Train(1, "ASD", "IC", new LinkedList<Coach>(), new LinkedList<Stop>()));
         
+    }
+
+    public void addTrain(int id, String name, String type, List<Coach> coaches, List<Stop> stops){
+        trains.add(new Train(id, name, type, coaches, stops));
+        //TODO: a guitól kapott cuccokból konstruáljon egy vonatot
     }
     
 }

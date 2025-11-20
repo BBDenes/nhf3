@@ -3,10 +3,13 @@ package ui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.io.*;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -16,12 +19,11 @@ public class ModernComponents {
     public static final Color TEXT_COLOR = new Color(240, 240, 240);          
     public static final Color INPUT_BG_COLOR = new Color(255, 255, 255);      
     public static final Color BUTTON_COLOR = new Color(46, 204, 113);         
-    public static final Color BUTTON_HOVER_COLOR = new Color(39, 174, 96);
 
-    public static JLabel createStyledLabel(String text) {
+    public static JLabel createStyledLabel(String text, int fontSize) {
         JLabel lbl = new JLabel(text);
         lbl.setForeground(TEXT_COLOR);
-        lbl.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        lbl.setFont(new Font("Segoe UI", Font.BOLD, fontSize));
         return lbl;
     }
 
@@ -39,10 +41,15 @@ public class ModernComponents {
 
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn.setBackground(BUTTON_HOVER_COLOR);
+                double factor = 1 - (15.0 / 100.0);
+                int newRed = (int) Math.round(background.getRed()*factor);
+                int newGreen = (int) Math.round(background.getGreen()*factor);
+                int newBlue = (int) Math.round(background.getBlue()*factor);
+                btn.setBackground(new Color(newRed, newGreen, newBlue));
+                
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn.setBackground(BUTTON_COLOR);
+                btn.setBackground(background);
             }
         });
         return btn;
@@ -54,4 +61,12 @@ public class ModernComponents {
         comp.setBorder(new LineBorder(new Color(200, 200, 200), 1));
     }
 
+    public static JList<String> createStyledList(DefaultListModel<String> model) {
+        JList<String> list = new JList<>(model);
+        list.setBackground(new Color(60, 63, 65)); // Kicsit világosabb szürke mint a háttér
+        list.setForeground(ModernComponents.TEXT_COLOR);
+        list.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        list.setBorder(new LineBorder(new Color(80, 80, 80), 1));
+        return list;
+    }
 }
