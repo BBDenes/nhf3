@@ -10,13 +10,13 @@ public class TrainHandler {
         trains = new LinkedList<>();
     }
 
-    public List<Train> readTrains(String path){
+    public void readTrains(String path){
         if(path == null){
             //TODO: Beolvasó ablak
             System.out.println("No trains added.");
         }
-        //TODO: Actually beolvasni vonatokat
-        return new LinkedList<>();
+        this.trains.add(new Train(1, "ASD", "IC", new LinkedList<Coach>(), new LinkedList<Stop>()));
+        
     }
     
 }

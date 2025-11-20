@@ -2,7 +2,6 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import java.awt.*;
 import train.*;
@@ -12,8 +11,7 @@ public class TicketMenu extends JDialog {
 
     private JComboBox<String> honnanBox;
     private JComboBox<String> hovaBox;
-    private JSpinner darabSpinner;
-    private TrainHandler trainHandler; // Ha szükség van az adatokra
+    private TrainHandler trainHandler;
 
 
 
@@ -65,14 +63,14 @@ public class TicketMenu extends JDialog {
 
         gbc.gridx = 1; gbc.weightx = 0.7;
         hovaBox = new JComboBox<>(allomasok);
-        ModernComponents.styleComponent(hovaBox); // Alapértelmezett érték módosítása, hogy ne ugyanaz legyen
+        ModernComponents.styleComponent(hovaBox); 
         if (hovaBox.getItemCount() > 1) hovaBox.setSelectedIndex(1); 
         mainPanel.add(hovaBox, gbc);
         
 
         gbc.gridx = 0; gbc.gridy = 4; 
         gbc.gridwidth = 2;
-        gbc.insets = new Insets(30, 10, 10, 10); // Nagyobb hely a gomb felett
+        gbc.insets = new Insets(30, 10, 10, 10);
         
         JButton buyButton = ModernComponents.createModernButton("Keresés!", ModernComponents.BUTTON_COLOR, Color.WHITE);
         
