@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -68,5 +69,10 @@ public class ModernComponents {
         list.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         list.setBorder(new LineBorder(new Color(80, 80, 80), 1));
         return list;
+    }
+
+    public static void styleScrollPane(JScrollPane scroll) {
+        scroll.getViewport().setBackground(ModernComponents.BACKGROUND_COLOR);
+        scroll.setBorder(null);
     }
 }

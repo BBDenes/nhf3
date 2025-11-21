@@ -36,6 +36,36 @@ public class Coach implements Serializable {
             seats.add(new Seat(i, atTable, position));
         }
     }
+
+    public Coach(String formattedInput) throws NumberFormatException{
+        String[] in = formattedInput.split(";");
+        if(in.length != 6){ throw new NumberFormatException("Nem megfelelő számú bemenet");}
+        int id = Integer.parseInt(in[0]);
+        int cap = Integer.parseInt(in[1]);
+        int bycicle = Integer.parseInt(in[2]);
+        int wheelchair = Integer.parseInt(in[3]);
+        boolean fc = Boolean.parseBoolean(in[4]);
+        boolean buffet = Boolean.parseBoolean(in[5]);
+
+        this.id = id;
+        this.capacity = cap;
+        this.bicycleCapacity = bycicle;
+        this.wheelchairCapacity = wheelchair;
+        this.firstClass = fc;
+        this.buffetCar = buffet;
+        this.seats = new ArrayList<>();
+        this.tickets = new ArrayList<>();
+        this.reservedSeats = new ArrayList<>();
+
+        for (int i = 1; i <= capacity; i++) {
+            Seat.Position position = (i % 2 == 0) ? Seat.Position.CORRIDOR : Seat.Position.WINDOW; // Páros=folyosó, Páratlan=ablak
+            boolean atTable = (i <= 4 || i > capacity-4);
+            seats.add(new Seat(i, atTable, position));
+        }
+        
+            
+        
+    }
     public int getId() { return id;}
     public int getCapacity() {return capacity;}
     public int getBicycleCapacity() {return bicycleCapacity;}
@@ -46,13 +76,12 @@ public class Coach implements Serializable {
     @Override
     public String toString() {
         return "Coach: " +
-                "id=" + id +
-                ", capacity=" + capacity +
-                ", bicycleCapacity=" + bicycleCapacity +
-                ", wheelchairCapacity=" + wheelchairCapacity +
-                ", firstClass=" + firstClass +
-                ", buffetCar=" + buffetCar +
-                '}';
+                "id: " + id +
+                ", férőhely" + capacity +
+                ", kerékárhelyek: " + bicycleCapacity +
+                ", akadálymentes helyek: " + wheelchairCapacity +
+                ", 1.osztály" + firstClass +
+                ", Büfékocsi:" + buffetCar;
     }
 
     public void addTicket(Reservation t) throws RuntimeException{

@@ -1,8 +1,6 @@
 package utilities;
 
-import java.awt.List;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Time implements Comparable<Time>, Serializable{
     int hour, minute;

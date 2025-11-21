@@ -22,7 +22,8 @@ public class TrainHandler {
 
     public void addTrain(int id, String name, String type, List<Coach> coaches, List<Stop> stops){
         trains.add(new Train(id, name, type, coaches, stops));
-        //TODO: a guitól kapott cuccokból konstruáljon egy vonatot
+        
     }
+
     
 }

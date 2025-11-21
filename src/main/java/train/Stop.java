@@ -13,6 +13,14 @@ public class Stop implements Serializable{
         this.leave = leave;
         if (arrive.compareTo(leave) > 0) throw new IllegalArgumentException("Arrival time is earlier than Leave time");
     }
+    public Stop(String formattedInput) throws NumberFormatException, IllegalArgumentException{
+        String[] split = formattedInput.split(";");
+        if(split.length != 3) throw new NumberFormatException("Nem megfelelő számú bemenet!: " + split.length);
+        this.name = split[0];
+        this.arrive = new Time(split[1]);
+        this.leave = new Time(split[2]);
+        if (arrive.compareTo(leave) > 0) throw new IllegalArgumentException("Arrival time is earlier than Leave time");
+    }
 
 
     public String getName(){return name;}
