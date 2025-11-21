@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import train.Coach;
 import train.Stop;
-import train.Train;
 import train.TrainHandler;
 import java.awt.*;
 import java.awt.event.ActionListener;

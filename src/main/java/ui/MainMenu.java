@@ -1,8 +1,6 @@
 package ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,6 +8,8 @@ import java.awt.Insets;
 import javax.swing.*;
 
 import train.TrainHandler;
+
+
 
 public class MainMenu extends JFrame {
     private JButton buyTicketButton;
@@ -25,8 +25,11 @@ public class MainMenu extends JFrame {
     }
 
     private void renderMainMenu(TrainHandler th){
+
+        //TODO: Fájl menü, ahol id szerint lehet törölni a vonatot
         JPanel menuPanel = new JPanel(new GridBagLayout());
         menuPanel.setBackground(new Color(45, 45, 45));
+        
         
         buyTicketButton = ModernComponents.createModernButton("Jegyvásárlás", new Color(46, 204, 113), Color.WHITE);
         editTrainsButton = ModernComponents.createModernButton("Vonat hozzáadása", new Color(52, 152, 219), Color.WHITE);

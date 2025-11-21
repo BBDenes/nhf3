@@ -78,10 +78,10 @@ public class Coach implements Serializable {
         return "Coach: " +
                 "id: " + id +
                 ", férőhely" + capacity +
-                ", kerékárhelyek: " + bicycleCapacity +
+                ", kerékpárhelyek: " + bicycleCapacity +
                 ", akadálymentes helyek: " + wheelchairCapacity +
-                ", 1.osztály" + firstClass +
-                ", Büfékocsi:" + buffetCar;
+                ", 1.osztály: " + firstClass +
+                ", Büfékocsi: " + buffetCar;
     }
 
     public void addTicket(Reservation t) throws RuntimeException{

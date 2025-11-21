@@ -5,6 +5,11 @@ import java.util.List;
 
 public class TrainHandler {
     private List<Train> trains;
+    private List<Coach> coachesToAdd;
+    private List<Stop> stopsToAdd;
+    private int newTrainId;
+    private String newTrainString;
+
 
     public TrainHandler(){
         trains = new LinkedList<>();
@@ -29,5 +34,7 @@ public class TrainHandler {
         
     }
 
+
+    //TODO: kiszervezni neki a vonathozzáadást, id egyediségvizsgálattal, akár saját exception
     
 }

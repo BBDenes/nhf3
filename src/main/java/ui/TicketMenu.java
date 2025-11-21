@@ -13,23 +13,24 @@ public class TicketMenu extends JDialog {
     private TrainHandler trainHandler;
 
 
-
     public TicketMenu(JFrame parent, TrainHandler th) {
         super(parent, "Jegyvásárlás", true);
         this.trainHandler = th;
 
-        // Ablak alapok
+        renderSearchMenu(parent);
+    }
+
+    private void renderSearchMenu(JFrame parent){
         setSize(450, 400);
         setLocationRelativeTo(parent);
         setResizable(false); 
 
-        // Fő panel létrehozása
         JPanel mainPanel = new JPanel(new GridBagLayout());
         mainPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
-        mainPanel.setBorder(new EmptyBorder(25, 25, 25, 25)); // Nagy belső margó az ablak szélétől
+        mainPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); // Elemek közötti távolság
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         JLabel titleLabel = new JLabel("Új jegy vásárlása");
@@ -70,13 +71,31 @@ public class TicketMenu extends JDialog {
         gbc.gridwidth = 2;
         gbc.insets = new Insets(30, 10, 10, 10);
         
-        JButton buyButton = ModernComponents.createModernButton("Keresés!", ModernComponents.BUTTON_COLOR, Color.WHITE);
+        JButton buyButton = ModernComponents.createModernButton("Tovább az utasok adataihoz", ModernComponents.BUTTON_COLOR, Color.WHITE);
         
-        buyButton.addActionListener(e -> processPurchase());
+        buyButton.addActionListener(e -> {
+            this.remove(mainPanel);
+            this.update(getGraphics());
+            renderPassengersMenu();
+            this.update(getGraphics());
+        });
         
         mainPanel.add(buyButton, gbc);
 
         this.add(mainPanel);
+    }
+
+    private void renderPassengersMenu(){
+        JPanel newPanel = new JPanel(new GridBagLayout());
+        newPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
+        newPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
+        JLabel titleLabel = new JLabel("Új jegy vásárlása");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        titleLabel.setForeground(ModernComponents.TEXT_COLOR);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        newPanel.add(titleLabel);
+        this.add(newPanel);
     }
 
     private void processPurchase() {
@@ -93,6 +112,11 @@ public class TicketMenu extends JDialog {
         
         // Bezárjuk az ablakot sikeres vásárlás után
         dispose(); 
+    }
+
+    private void switchMenu(JPanel from, JPanel to){
+        this.remove(from);
+        this.add(to);
     }
 
 
