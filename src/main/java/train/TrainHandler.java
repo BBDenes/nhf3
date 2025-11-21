@@ -5,10 +5,14 @@ import java.util.List;
 
 public class TrainHandler {
     private List<Train> trains;
-    private List<Coach> coachesToAdd;
-    private List<Stop> stopsToAdd;
+    private List<String> passengerNames;
+    private List<Integer> passengerPassIds; //id=-1, ha nincs
+
+    //új vonat létrehozásához
     private int newTrainId;
     private String newTrainString;
+    private List<Coach> coachesToAdd;
+    private List<Stop> stopsToAdd;
 
 
     public TrainHandler(){

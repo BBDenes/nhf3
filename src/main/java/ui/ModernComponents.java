@@ -3,7 +3,6 @@ package ui;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.io.*;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -19,7 +18,8 @@ public class ModernComponents {
     public static final Color BACKGROUND_COLOR = new Color(45, 45, 45);       
     public static final Color TEXT_COLOR = new Color(240, 240, 240);          
     public static final Color INPUT_BG_COLOR = new Color(255, 255, 255);      
-    public static final Color BUTTON_COLOR = new Color(46, 204, 113);         
+    public static final Color BUTTON_COLOR = new Color(46, 204, 113);
+    public static final Color ACCENT_COLOR = new Color(60, 63, 65);    
 
     public static JLabel createStyledLabel(String text, int fontSize) {
         JLabel lbl = new JLabel(text);
