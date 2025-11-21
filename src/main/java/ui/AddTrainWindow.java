@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import train.Coach;
 import train.Stop;
+import train.Train;
 import train.TrainHandler;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,10 +19,12 @@ public class AddTrainWindow extends JDialog {
     private List<Coach> coachesToAdd;
     private List<Stop> stopsToAdd;
     private TrainHandler th;
+    private JTextField idField, nameField;
 
     public AddTrainWindow(JFrame parent, TrainHandler th) {
         super(parent, "Új vonat felvétele", true);
         coachesToAdd = new LinkedList<>();
+        stopsToAdd = new LinkedList<>();
         this.th = th;
         
         // Kicsit szélesebb ablak, ha egymás mellé tesszük a listákat
@@ -34,34 +37,33 @@ public class AddTrainWindow extends JDialog {
     }
 
     private void renderWindow() {
-        // 1. FELSŐ SZEKCIÓ (Cím + Alapadatok)
         JPanel topPanel = new JPanel(new GridBagLayout());
         topPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
         topPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
         renderBasicInfo(topPanel);
         add(topPanel, BorderLayout.NORTH);
 
-        // 2. KÖZÉPSŐ SZEKCIÓ (A két lista egymás mellett)
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 20, 0)); // 1 sor, 2 oszlop, 20px rés
+        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 20, 0));
         centerPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
         centerPanel.setBorder(new EmptyBorder(0, 20, 0, 20));
 
-        // -- Bal oldal: Kocsik --
         DefaultListModel<String> kocsikModel = new DefaultListModel<>();
-        JList<String> kocsikListUI = ModernComponents.createStyledList(kocsikModel);
+        JList<String> coachListUI = ModernComponents.createStyledList(kocsikModel);
         JTextField coachAddField = new JTextField();
         ModernComponents.styleComponent(coachAddField);
 
         JPanel coachesPanel = createSectionPanel(
             "Csatolt kocsik",
-            kocsikModel, kocsikListUI,
+            kocsikModel, coachListUI,
             "Kocsi: id;férőhely;bicikli;szék;osztály;büfé",
             coachAddField,
             e-> coachAddListener(kocsikModel, coachAddField),
-            e -> removeFromList(kocsikModel, kocsikListUI)
+            e -> {
+                removeFromList(kocsikModel, coachListUI);
+                coachesToAdd.remove(coachListUI.getSelectedIndex());
+            }
         );
 
-        // -- Jobb oldal: Megállók --
         DefaultListModel<String> megallokModel = new DefaultListModel<>();
         JList<String> megallokListUI = ModernComponents.createStyledList(megallokModel);
         JTextField stopAddField = new JTextField();
@@ -72,7 +74,7 @@ public class AddTrainWindow extends JDialog {
             megallokModel, megallokListUI,
             "Megálló: Név;Érk;Ind",
             stopAddField,
-            e -> coachAddListener(megallokModel, stopAddField),
+            e -> stopAddListener(megallokModel, stopAddField),
             e -> removeFromList(megallokModel, megallokListUI)
         );
 
@@ -89,7 +91,6 @@ public class AddTrainWindow extends JDialog {
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Cím
         JLabel titleLabel = new JLabel("Új vonat hozzáadása");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
         titleLabel.setForeground(ModernComponents.TEXT_COLOR);
@@ -99,29 +100,25 @@ public class AddTrainWindow extends JDialog {
         gbc.insets = new Insets(0, 0, 20, 0);
         p.add(titleLabel, gbc);
 
-        // Visszaállítás
         gbc.gridwidth = 1;
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        // Név
         gbc.gridx = 0; gbc.gridy = 1; gbc.weightx = 0.1;
         p.add(ModernComponents.createStyledLabel("Név:", 14), gbc);
         
         gbc.gridx = 1; gbc.weightx = 0.4;
-        JTextField nameField = new JTextField();
+        nameField = new JTextField();
         ModernComponents.styleComponent(nameField);
         p.add(nameField, gbc);
 
-        // ID
         gbc.gridx = 2; gbc.weightx = 0.1;
-        p.add(ModernComponents.createStyledLabel("ID:", 14), gbc); // Rövidebb label
+        p.add(ModernComponents.createStyledLabel("ID:", 14), gbc);
 
         gbc.gridx = 3; gbc.weightx = 0.4;
-        JTextField idField = new JTextField();
+        idField = new JTextField();
         ModernComponents.styleComponent(idField);
         p.add(idField, gbc);
 
-        // Típus (Külön sorban, középre igazítva vagy széthúzva)
         gbc.gridx = 0; gbc.gridy = 2; gbc.weightx = 0.1;
         p.add(ModernComponents.createStyledLabel("Típus:", 14), gbc);
 
@@ -168,8 +165,6 @@ public class AddTrainWindow extends JDialog {
 
         return panel;
     }
-
-
     private void removeFromList(DefaultListModel<String> model, JList<String> listUI) {
         int selectedIndex = listUI.getSelectedIndex();
         if (selectedIndex != -1) {
@@ -204,7 +199,15 @@ public class AddTrainWindow extends JDialog {
         bottomPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
         
         JButton saveButton = ModernComponents.createModernButton("VONAT MENTÉSE", ModernComponents.BUTTON_COLOR, Color.WHITE);
-        saveButton.addActionListener(e -> { /* TODO: Save logic */ });
+        saveButton.addActionListener(e -> {
+            try{
+                int newId = Integer.parseInt(idField.getText());
+
+                Train newTrain = new Train(newId, nameField.getText(), (String) typeSelect.getSelectedItem(), coachesToAdd, stopsToAdd);
+                System.out.println(newTrain.toString());
+                dispose();
+            }catch(Exception trainException) {System.out.println("Szar a vonatod ocsi" + trainException.getMessage());}
+        });
         
         JButton cancelButton = ModernComponents.createModernButton("Mégsem", new Color(100, 100, 100), Color.WHITE);
         cancelButton.addActionListener(e -> dispose());
