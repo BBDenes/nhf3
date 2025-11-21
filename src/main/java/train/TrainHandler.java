@@ -10,6 +10,10 @@ public class TrainHandler {
         trains = new LinkedList<>();
     }
 
+    public List<Train> getTrains(){
+        return trains;
+    }
+
     public void readTrains(String path){
         //TODO: fájlbeolvasás
         if(path == null){

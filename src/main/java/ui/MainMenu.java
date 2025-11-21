@@ -37,6 +37,7 @@ public class MainMenu extends JFrame {
         gbc.insets = new Insets(5, 10, 10, 10);
 
         buyTicketButton.addActionListener(e->{
+            System.out.println(th.getTrains().toString());
             TicketMenu ticketWindow = new TicketMenu(this, th);
             ticketWindow.setVisible(true);
         });

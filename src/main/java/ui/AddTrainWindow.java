@@ -7,7 +7,6 @@ import train.Stop;
 import train.Train;
 import train.TrainHandler;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
@@ -202,11 +201,10 @@ public class AddTrainWindow extends JDialog {
         saveButton.addActionListener(e -> {
             try{
                 int newId = Integer.parseInt(idField.getText());
-
-                Train newTrain = new Train(newId, nameField.getText(), (String) typeSelect.getSelectedItem(), coachesToAdd, stopsToAdd);
-                System.out.println(newTrain.toString());
+                th.addTrain(newId, nameField.getText(), (String) typeSelect.getSelectedItem() , coachesToAdd, stopsToAdd);
+                System.out.println("Vonat hozzaadva");
                 dispose();
-            }catch(Exception trainException) {System.out.println("Szar a vonatod ocsi" + trainException.getMessage());}
+            }catch(Exception trainException) {System.out.println("Szar a vonatod ocsi: " + trainException.getMessage());}
         });
         
         JButton cancelButton = ModernComponents.createModernButton("Mégsem", new Color(100, 100, 100), Color.WHITE);
