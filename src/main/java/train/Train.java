@@ -30,6 +30,8 @@ public class Train {
     public String getType(){return type;}
     public List<Coach> getCoaches(){return coaches;}
     public List<Stop> getStops(){return stops;}
+    public List<String> getServices(){return services;}
+    
 
     public void addCoach(Coach c){
         if(c != null){

@@ -2,13 +2,12 @@ package ui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import train.Coach;
-import train.Stop;
-import train.TrainHandler;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
+
+import train.*;
 
 public class AddTrainWindow extends JDialog {
 

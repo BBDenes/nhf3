@@ -7,13 +7,13 @@ import java.awt.*;
 import java.util.List;
 import java.util.ArrayList;
 
-import train.*;
+import train.TrainHandler;
 
 public class TicketMenu extends JDialog {
 
     private List<JTextField> utasNevMezok = new ArrayList<>();
     private List<JCheckBox> paccCheckFields = new ArrayList<>();
-    private List<JTextField> passIdField = new ArrayList<>();
+    private List<JTextField> passIdFields = new ArrayList<>();
     private JSpinner passengerNumSpinner;
 
     private JPanel currentPanel;
@@ -123,7 +123,7 @@ public class TicketMenu extends JDialog {
 
         utasNevMezok.clear();
         paccCheckFields.clear();
-        passIdField.clear();
+        passIdFields.clear();
 
         int utasokSzama = (Integer) passengerNumSpinner.getValue();
 
@@ -172,35 +172,32 @@ public class TicketMenu extends JDialog {
         g.insets = new Insets(5, 10, 5, 10);
         g.fill = GridBagConstraints.HORIZONTAL;
         
-        // 1. Sor: Címke + Név
         g.gridx = 0; g.gridy = 0; g.weightx = 0.3;
-        JLabel lblNev = ModernComponents.createStyledLabel(sorszam + ". Utas neve:", 14);
-        p.add(lblNev, g);
+        p.add(ModernComponents.createStyledLabel(sorszam + ". Utas neve:", 14), g);
 
         g.gridx = 1; g.weightx = 0.7;
         JTextField txtNev = new JTextField();
         ModernComponents.styleComponent(txtNev);
-        utasNevMezok.add(txtNev); // Eltároljuk a referenciát!
+        utasNevMezok.add(txtNev);
         p.add(txtNev, g);
 
-        // 2. Sor: Bérlet checkbox + Bérlet ID
         g.gridx = 0; g.gridy = 1; g.weightx = 0.3;
-        JCheckBox chkBerlet = new JCheckBox("Van bérlete? Bérlet azonosító: ");
-        chkBerlet.setBackground(new Color(60, 63, 65));
-        chkBerlet.setForeground(Color.WHITE);
-        chkBerlet.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        paccCheckFields.add(chkBerlet);
-        p.add(chkBerlet, g);
+        JCheckBox passCheckbox = new JCheckBox("Van bérlete? Bérlet azonosító: ");
+        passCheckbox.setBackground(new Color(60, 63, 65));
+        passCheckbox.setForeground(Color.WHITE);
+        passCheckbox.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        paccCheckFields.add(passCheckbox);
+        p.add(passCheckbox, g);
 
         g.gridx = 1; g.weightx = 0.7;
-        JTextField txtBerletId = new JTextField();
-        ModernComponents.styleComponent(txtBerletId);
-        txtBerletId.setEnabled(false);
-        txtBerletId.setToolTipText("Adja meg a bérlet számát");
-        passIdField.add(txtBerletId);
-        p.add(txtBerletId, g);
+        JTextField passField = new JTextField();
+        ModernComponents.styleComponent(passField);
+        passField.setEnabled(false);
+        passField.setToolTipText("Adja meg a bérlet számát");
+        passIdFields.add(passField);
+        p.add(passField, g);
 
-        chkBerlet.addActionListener(e -> txtBerletId.setEnabled(chkBerlet.isSelected()));
+        passCheckbox.addActionListener(e -> passField.setEnabled(passCheckbox.isSelected()));
 
         return p;
     }
@@ -222,7 +219,7 @@ public class TicketMenu extends JDialog {
         for (int i = 0; i < utasNevMezok.size(); i++) {
             String nev = utasNevMezok.get(i).getText();
             boolean vanBerlet = paccCheckFields.get(i).isSelected();
-            String berletId = passIdField.get(i).getText();
+            String berletId = passIdFields.get(i).getText();
             
             if (nev.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, (i+1) + ". utas neve hiányzik!", "Hiba", JOptionPane.ERROR_MESSAGE);

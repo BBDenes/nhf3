@@ -39,6 +39,6 @@ public class TrainHandler {
     }
 
 
-    //TODO: kiszervezni neki a vonathozzáadást, id egyediségvizsgálattal, akár saját exception
+    
     
 }
