@@ -5,6 +5,7 @@ import train.Stop;
 import utilities.Time;
 
 public class Ticket implements Serializable{
+
     protected int id;
     protected int trainId;
     protected int price;
@@ -16,6 +17,7 @@ public class Ticket implements Serializable{
     protected Time timeOfArrival;
 
     public Ticket(int id, int trainId, int price, String passengerName, Stop from, Stop to) {
+        
         this.id = id;
         this.trainId = trainId;
         this.price = price;
@@ -32,7 +34,7 @@ public class Ticket implements Serializable{
     public String getPassengerName(){return passengerName;}
 
     public String getTicketType() {
-        return "Generic ticket";
+        return "Menetjegy";
     }
 
     @Override

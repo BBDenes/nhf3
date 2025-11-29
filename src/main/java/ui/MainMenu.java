@@ -8,18 +8,23 @@ import java.awt.Insets;
 import javax.swing.*;
 
 import train.TrainHandler;
+import utilities.PurchaseController;
 
 
 
 public class MainMenu extends JFrame {
     private JButton buyTicketButton;
     private JButton editTrainsButton;
+
+    private PurchaseController purchase;
+
     public MainMenu(TrainHandler th){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(true);
         setTitle("Máv++");
         setSize(500,300);
-        
+        setIconImage(new ImageIcon("src/main/resources/icon.png").getImage());
+        this.purchase = new PurchaseController();
         renderMainMenu(th);
 
     }
@@ -32,7 +37,7 @@ public class MainMenu extends JFrame {
         
         
         buyTicketButton = ModernComponents.createModernButton("Jegyvásárlás", new Color(46, 204, 113), Color.WHITE);
-        editTrainsButton = ModernComponents.createModernButton("Vonat hozzáadása", new Color(52, 152, 219), Color.WHITE);
+        editTrainsButton = ModernComponents.createModernButton("Admin panel", new Color(52, 152, 219), Color.WHITE);
         
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -41,7 +46,7 @@ public class MainMenu extends JFrame {
 
         buyTicketButton.addActionListener(e->{
             System.out.println(th.getTrains().toString());
-            TicketMenu ticketWindow = new TicketMenu(this, th);
+            TicketMenu ticketWindow = new TicketMenu(this, th, purchase);
             ticketWindow.setVisible(true);
         });
         menuPanel.add(buyTicketButton, gbc);

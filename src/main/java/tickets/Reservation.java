@@ -4,9 +4,8 @@ import train.Stop;
 
 public class Reservation extends Ticket{
     public enum Type {
-        SECOND_CLASS,
-        FIRST_CLASS,
-        BYCICLE
+        WITH_PASS,
+        WITHOUT_PASS
     }
 
     int seatNum;
@@ -15,12 +14,12 @@ public class Reservation extends Ticket{
     String passId;
 
 
-    public Reservation(int id, int trainId, int price, String passengerName, Stop from, Stop to, int seatNum, int coachNum, String passId, Type t){
+    public Reservation(int id, int trainId, int price, String passengerName, Stop from, Stop to, int coachNum, int seatNum, String passId){
         super(id, trainId, price, passengerName, from, to);
         this.seatNum = seatNum;
         this.coachNum = coachNum;
-        this.type = t;
         this.passId = passId;
+        this.type = passId.isEmpty() ? Type.WITHOUT_PASS : Type.WITH_PASS; 
 
     }
 
@@ -29,7 +28,7 @@ public class Reservation extends Ticket{
 
     @Override
     public String toString(){
-        return "Jegy: " + id + ", Vonat: " + trainId + ", Ár: " + price + "Ft, Utas: " + passengerName + ", Kocsi: " + coachNum + ", Hely: " + seatNum + ", Igazolvány ID: " + passId;
+        return (this.type.equals(Type.WITH_PASS)? "Egyszeru helyjegy" : "Bérlet nélküli helyjegy") + id + " | Vonat: " + trainId + ", Ár: " + price + "Ft, Utas: " + passengerName + ", Kocsi: " + coachNum + ", Hely: " + seatNum + ", Igazolvány ID: " + passId;
     }
 
     @Override

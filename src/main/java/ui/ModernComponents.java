@@ -2,8 +2,10 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -12,6 +14,8 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import train.Coach;
 
 public class ModernComponents {
 
@@ -75,4 +79,56 @@ public class ModernComponents {
         scroll.getViewport().setBackground(ModernComponents.BACKGROUND_COLOR);
         scroll.setBorder(null);
     }
+
+    public static JButton createCoachButton(Coach c) {
+        // Vagon formájú gomb
+        String label = "<html><center>Kocsi #" + c.getId() + "<br/>";
+        
+        // Szolgáltatások ikonjai
+        if (c.isFirstClass()) label += "1. "; // 1. osztály
+        if (c.getBicycleCapacity() > 0) label += "bicikli ";
+        if (c.getWheelchairCapacity() > 0) label += "akadálymentes ";
+        if (c.isBuffetCar()) label += "Büfé "; // Feltételezve a hasBuffet() metódust
+        
+        label += "</center></html>";
+
+        JButton btn = new JButton(label);
+        btn.setPreferredSize(new Dimension(120, 70));
+        btn.setBackground(new Color(70, 70, 70));
+        btn.setForeground(Color.WHITE);
+        btn.setFocusPainted(false);
+        btn.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+        btn.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        
+        // Ha rávisszük az egeret, világosodik
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn.setBackground(new Color(90, 90, 90));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn.setBackground(new Color(70, 70, 70));
+            }
+        });
+
+        return btn;
+    }
+
+    public static JButton createSeatButton(int seatNum, boolean isReserved) {
+        JButton btn = new JButton(String.valueOf(seatNum));
+        btn.setPreferredSize(new Dimension(50, 50));
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        
+        if (isReserved) {
+            btn.setBackground(new Color(200, 60, 60)); // Piros (Foglalt)
+            btn.setForeground(Color.WHITE);
+            btn.setEnabled(false); // Nem kattintható
+        } else {
+            btn.setBackground(ModernComponents.BUTTON_COLOR); // Zöld (Szabad)
+            btn.setForeground(Color.WHITE);
+            btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        
+        return btn;
+    }
+
 }
