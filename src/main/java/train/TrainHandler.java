@@ -1,9 +1,20 @@
 package train;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import tickets.Reservation;
 import tickets.Ticket;
@@ -14,6 +25,7 @@ public class TrainHandler {
     private final int seatPrice = 650; 
     private final int seatAndTicketPrice = 1000 + seatPrice; 
     private final int simpleTicketPrice = 1000;
+    private final String DB_FILE = "trains_db.json";
 
     private List<Train> trains;
     private static int ticketID;
@@ -195,4 +207,82 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
 
         }
     }
+
+    public void finalizeBooking(PurchaseController p) {
+        List<Ticket> tickets = p.getTicketsToBuy();
+        Train train = getTrainByIndex(p.getTrainId()); // A vonat, amire foglalunk
+
+        for (Ticket t : tickets) {
+            // Csak akkor kell széket állítani, ha ez egy Reservation (Helyjegy)
+            if (t instanceof Reservation) {
+                Reservation res = (Reservation) t;
+                
+                // Megkeressük a kocsit ID alapján
+                Coach targetCoach = null;
+                for (Coach c : train.getCoaches()) {
+                    if (c.getId() == res.getCoach()) { // Feltételezve, hogy a Reservation tárolja a kocsi ID-t
+                        targetCoach = c;
+                        break;
+                    }
+                }
+
+                if (targetCoach != null) {
+                    targetCoach.addTicket(t);
+                }
+            } else {
+                //TODO: Miafasz van ha nem helyjegy? 
+            }
+        }
+
+        saveTrainsToJson();
+
+        System.out.println("Adatok sikeresen frissítve és elmentve.");
+    }
+
+
+    public void saveTrainsToJson() {
+        try (Writer writer = new FileWriter(DB_FILE)) {
+            // A setPrettyPrinting() miatt szépen tördelt, olvasható JSON lesz
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            
+            // Ez az EGYETLEN sor végzi a varázslatot:
+            // Végigmegy a listán, a vonatokon, a kocsikon, a székeken, és mindent átalakít szöveggé.
+            gson.toJson(this.trains, writer);
+            
+            System.out.println("Adatbázis sikeresen mentve: " + DB_FILE);
+        } catch (IOException e) {
+            System.err.println("Hiba a mentés során: " + e.getMessage());
+        }
+    }
+
+    public void loadTrainsFromJson() {
+        File file = new File(DB_FILE);
+        if (!file.exists()) {
+            System.out.println("Nincs mentett adatbázis, üres listával indulunk.");
+            this.trains = new LinkedList<>();
+            return;
+        }
+
+        try (Reader reader = new FileReader(DB_FILE)) {
+            Gson gson = new Gson();
+            
+            // Meg kell mondani a Gson-nak, hogy pontosan MILYEN típusú listát várunk vissza
+            // (Mivel a List<Train> generikus típus)
+            Type listType = new TypeToken<LinkedList<Train>>(){}.getType();
+            
+            this.trains = gson.fromJson(reader, listType);
+            
+            // Null check, ha esetleg üres lenne a fájl
+            if (this.trains == null) {
+                this.trains = new LinkedList<>();
+            }
+            
+            System.out.println("Sikeres betöltés: " + trains.size() + " db vonat.");
+            
+        } catch (IOException e) {
+            System.err.println("Hiba a betöltés során: " + e.getMessage());
+            this.trains = new LinkedList<>(); // Hiba esetén üres lista, hogy ne fagyjon le
+        }
+    }
+
 }

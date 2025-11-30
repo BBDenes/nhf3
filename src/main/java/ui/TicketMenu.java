@@ -427,7 +427,7 @@ public class TicketMenu extends JDialog {
         
         JOptionPane.showMessageDialog(this, "Sikeres foglalás", "Siker", JOptionPane.INFORMATION_MESSAGE);
         System.out.println(purchase.getTicketsToBuy().toString());
-        // TODO: switchToPanel(createSummaryPanel(trainHandler.getTicketsToBuy()));
+        showSummaryPanel();
     }
 
     private JPanel createAttributeSelectionPanel() {
@@ -526,6 +526,8 @@ public class TicketMenu extends JDialog {
     }
 
     
+   
+
     private JPanel seatMapPanel; 
     
     private JPanel createVisualReservePanel() {
@@ -567,7 +569,11 @@ public class TicketMenu extends JDialog {
             if (c.isFirstClass() == isFirstClass) {
                 if (firstValidCoach == null) firstValidCoach = c;
                 JButton coachBtn = ModernComponents.createCoachButton(c);
-                coachBtn.addActionListener(e -> renderSeatMap(c, trainId, isFirstClass));
+                coachBtn.addActionListener(e -> {
+                    seatMapPanel.removeAll();
+                    renderSeatMap(c, trainId, isFirstClass);
+
+                });
                 coachStrip.add(coachBtn);
             }
         }
@@ -619,11 +625,12 @@ public class TicketMenu extends JDialog {
             try {
                 trainHandler.reserveSpecificSeats(purchase);
                 JOptionPane.showMessageDialog(this, "Sikeres foglalás!");
-                // switchToPanel(createSummaryPanel(...));
+                showSummaryPanel();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Hiba: " + ex.getMessage());
             }
             
+            showSummaryPanel();
             
         });
 
@@ -658,7 +665,7 @@ public class TicketMenu extends JDialog {
             if (!reservedSeats.contains(i)) {
                 seatBtn.addActionListener(e -> {
                     int id = Integer.parseInt(seatBtn.getText());
-                    int globalSeatId = purchase.getGlobalSeatId(c.getId(), id-1); //0-indexelt a Seat lista
+                    int globalSeatId = purchase.getGlobalSeatId(c.getId(), id); //1-indexelt a Seat lista
                     boolean isSelected = reservedSeatIds.contains(globalSeatId);
                     if(isSelected){
                         seatBtn.setBackground(seatBtn.getBackground().brighter());
@@ -683,7 +690,10 @@ public class TicketMenu extends JDialog {
         seatMapPanel.repaint();
     }
 
+    public void showSummaryPanel() {
+        // Átadjuk a controllert, a handlert és az adatokat tartalmazó purchase objektumot
+        switchToPanel(new SummaryPanel(this, trainHandler, purchase));
+    }
 
-    
 
 }

@@ -1,0 +1,829 @@
+[
+  {
+    "id": 920,
+    "name": "Savaria nincskocsi",
+    "type": "Személy",
+    "coaches": [
+      {
+        "id": 411,
+        "capacity": 20,
+        "bicycleCapacity": 0,
+        "wheelchairCapacity": 1,
+        "available": 20,
+        "firstClass": false,
+        "buffetCar": false,
+        "tickets": [],
+        "seats": [
+          {
+            "id": 1,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 2,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 3,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 4,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 5,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 6,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 7,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 8,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 9,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 10,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 11,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 12,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 13,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 14,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 15,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 16,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 17,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 18,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 19,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 20,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          }
+        ],
+        "reservedSeats": []
+      }
+    ],
+    "stops": [
+      {
+        "name": "Budapest",
+        "arrive": {
+          "hour": 10,
+          "minute": 10
+        },
+        "leave": {
+          "hour": 10,
+          "minute": 10
+        }
+      },
+      {
+        "name": "Debrecen",
+        "arrive": {
+          "hour": 20,
+          "minute": 10
+        },
+        "leave": {
+          "hour": 20,
+          "minute": 10
+        }
+      }
+    ],
+    "services": []
+  },
+  {
+    "id": 69,
+    "name": "Esku jo nincsbicikli",
+    "type": "IC",
+    "coaches": [
+      {
+        "id": 411,
+        "capacity": 20,
+        "bicycleCapacity": 0,
+        "wheelchairCapacity": 1,
+        "available": 19,
+        "firstClass": false,
+        "buffetCar": false,
+        "tickets": [
+          {
+            "seatNum": 18,
+            "coachNum": 411,
+            "type": "WITHOUT_PASS",
+            "passId": "",
+            "id": 0,
+            "trainId": 69,
+            "price": 1650,
+            "passengerName": "asd",
+            "from": {
+              "name": "Budapest",
+              "arrive": {
+                "hour": 11,
+                "minute": 10
+              },
+              "leave": {
+                "hour": 11,
+                "minute": 10
+              }
+            },
+            "to": {
+              "name": "Debrecen",
+              "arrive": {
+                "hour": 21,
+                "minute": 10
+              },
+              "leave": {
+                "hour": 21,
+                "minute": 10
+              }
+            },
+            "timeOfLeave": {
+              "hour": 11,
+              "minute": 10
+            },
+            "timeOfArrival": {
+              "hour": 21,
+              "minute": 10
+            }
+          }
+        ],
+        "seats": [
+          {
+            "id": 1,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 2,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 3,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 4,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 5,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 6,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 7,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 8,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 9,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 10,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 11,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 12,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 13,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 14,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 15,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 16,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 17,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 18,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": true,
+            "isSelected": false
+          },
+          {
+            "id": 19,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 20,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          }
+        ],
+        "reservedSeats": [
+          18
+        ]
+      },
+      {
+        "id": 412,
+        "capacity": 40,
+        "bicycleCapacity": 0,
+        "wheelchairCapacity": 0,
+        "available": 39,
+        "firstClass": false,
+        "buffetCar": true,
+        "tickets": [
+          {
+            "id": 0,
+            "trainId": 69,
+            "price": 1650,
+            "passengerName": "asd",
+            "from": {
+              "name": "Budapest",
+              "arrive": {
+                "hour": 11,
+                "minute": 10
+              },
+              "leave": {
+                "hour": 11,
+                "minute": 10
+              }
+            },
+            "to": {
+              "name": "Debrecen",
+              "arrive": {
+                "hour": 21,
+                "minute": 10
+              },
+              "leave": {
+                "hour": 21,
+                "minute": 10
+              }
+            },
+            "timeOfLeave": {
+              "hour": 11,
+              "minute": 10
+            },
+            "timeOfArrival": {
+              "hour": 21,
+              "minute": 10
+            }
+          }
+        ],
+        "seats": [
+          {
+            "id": 1,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 2,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 3,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 4,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 5,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 6,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 7,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 8,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 9,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 10,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 11,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 12,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 13,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 14,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 15,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 16,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 17,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 18,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 19,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 20,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 21,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 22,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 23,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 24,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 25,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 26,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 27,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 28,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 29,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 30,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 31,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 32,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 33,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 34,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 35,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 36,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 37,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": true,
+            "isSelected": false
+          },
+          {
+            "id": 38,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 39,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 40,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          }
+        ],
+        "reservedSeats": [
+          37
+        ]
+      }
+    ],
+    "stops": [
+      {
+        "name": "Budapest",
+        "arrive": {
+          "hour": 11,
+          "minute": 10
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 10
+        }
+      },
+      {
+        "name": "Debrecen",
+        "arrive": {
+          "hour": 21,
+          "minute": 10
+        },
+        "leave": {
+          "hour": 21,
+          "minute": 10
+        }
+      }
+    ],
+    "services": [
+      "Buffet coach"
+    ]
+  }
+]

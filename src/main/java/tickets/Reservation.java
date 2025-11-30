@@ -19,12 +19,13 @@ public class Reservation extends Ticket{
         this.seatNum = seatNum;
         this.coachNum = coachNum;
         this.passId = passId;
-        this.type = passId.isEmpty() ? Type.WITHOUT_PASS : Type.WITH_PASS; 
+        this.type = passId == null || passId.isEmpty() ? Type.WITHOUT_PASS : Type.WITH_PASS; 
 
     }
 
     public int getSeat(){return seatNum;}
     public int getCoach(){return coachNum;}
+    public String getPassId(){return this.type == Type.WITH_PASS ? passId : null;}
 
     @Override
     public String toString(){

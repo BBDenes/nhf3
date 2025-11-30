@@ -26,11 +26,11 @@ public class MainMenu extends JFrame {
         setIconImage(new ImageIcon("src/main/resources/icon.png").getImage());
         this.purchase = new PurchaseController();
         renderMainMenu(th);
-
+        
     }
-
+    
     private void renderMainMenu(TrainHandler th){
-
+        
         //TODO: Fájl menü, ahol id szerint lehet törölni a vonatot
         JPanel menuPanel = new JPanel(new GridBagLayout());
         menuPanel.setBackground(new Color(45, 45, 45));
@@ -43,9 +43,9 @@ public class MainMenu extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(5, 10, 10, 10);
-
+        
         buyTicketButton.addActionListener(e->{
-            System.out.println(th.getTrains().toString());
+            this.purchase = new PurchaseController();
             TicketMenu ticketWindow = new TicketMenu(this, th, purchase);
             ticketWindow.setVisible(true);
         });

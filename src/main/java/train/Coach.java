@@ -110,13 +110,20 @@ public class Coach implements Serializable {
     }
 
     public void addTicket(Ticket t) throws RuntimeException{
-        if (reservedSeats.size() >= capacity) {
-            throw new RuntimeException("Coach is full!");
-        }
-        if (reservedSeats.contains(t.getSeat())) {
-            throw new RuntimeException("Seat already occupied");
-        }
         this.tickets.add(t);
+        this.reservedSeats.add(((Reservation)t).getSeat());
+        refreshAvailableSeats();
+    }
+
+    private void refreshAvailableSeats() {
+        this.available = capacity - reservedSeats.size();
+        for(Seat s : seats){
+            if(reservedSeats.contains(s.getId())){
+                s.setReserved(true);
+            } else {
+                s.setReserved(false);
+            }
+        }
     }
 
     public int generateAvailableSeat() {
