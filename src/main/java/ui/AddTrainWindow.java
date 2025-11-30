@@ -24,10 +24,8 @@ public class AddTrainWindow extends JDialog {
         stopsToAdd = new LinkedList<>();
         this.th = th;
         
-        // Kicsit szélesebb ablak, ha egymás mellé tesszük a listákat
         setSize(800, 600); 
         setLocationRelativeTo(parent);
-        // BorderLayout a fő konténernek: Ez a kulcs!
         setLayout(new BorderLayout());
         
         renderWindow();

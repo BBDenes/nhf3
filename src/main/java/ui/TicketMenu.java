@@ -271,7 +271,11 @@ public class TicketMenu extends JDialog {
         showSummaryPanel();
     }
 
-    public JPanel createAttributeSelectionPanel() {
+    public void showAttributeSelectionPanel(){
+        switchToPanel(renderAttributeSelectionPanel());
+    }
+
+    private JPanel renderAttributeSelectionPanel() {
         boolean isFirstClass = purchase.isFirstClass();
         int id = purchase.getTrainId();
         Train currentTrain = trainHandler.getTrainByIndex(id);

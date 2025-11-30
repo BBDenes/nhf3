@@ -182,7 +182,7 @@ public class TrainListPanel extends JPanel {
                 controller.processAutomaticReservation();
                 break;
             case "Tulajdonság megadása":
-                controller.createAttributeSelectionPanel();
+                controller.showAttributeSelectionPanel();
                 break;
             case "Grafikus":
                 controller.showVisualSeatPanel();
