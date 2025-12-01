@@ -34,6 +34,26 @@ public class Reservation extends Ticket{
 
     @Override
     public String getTicketType() {
-        return "2nd class ticket";
+        return "Másodosztályú helyjegy";
     }
+
+    protected String getExtraDetails() {
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("    <div class='row'>\n");
+        sb.append("      <span class='label'>Helyfoglalás</span>\n");
+        sb.append("      <span class='value'>Kocsi: ").append(this.coachNum).append(" | Hely: ").append(this.seatNum).append("</span>\n");
+        sb.append("    </div>\n");
+
+        if (passId != null && !passId.isEmpty()) {
+            sb.append("    <div class='row'>\n");
+            sb.append("      <span class='label'>Bérlet</span>\n");
+            sb.append("      <span class='value'>").append(passId).append("</span>\n");
+            sb.append("    </div>\n");
+        }
+
+        return sb.toString();
+    }
+
+
 }

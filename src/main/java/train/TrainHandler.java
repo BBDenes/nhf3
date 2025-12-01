@@ -24,7 +24,6 @@ public class TrainHandler {
 
     private final int seatPrice = 650; 
     private final int seatAndTicketPrice = 1000 + seatPrice; 
-    private final int simpleTicketPrice = 1000;
     private final String DB_FILE = "trains_db.json";
 
     private List<Train> trains;
@@ -32,11 +31,6 @@ public class TrainHandler {
 
     //vásárláshoz
 
-    //új vonat létrehozásához
-    private int newTrainId;
-    private String newTrainString;
-    private List<Coach> coachesToAdd;
-    private List<Stop> stopsToAdd;
 
 
 
@@ -61,7 +55,11 @@ public class TrainHandler {
     }
 
     public void addTrain(int id, String name, String type, List<Coach> coaches, List<Stop> stops){
+        for (Train t : this.trains) {
+            if(t.getId() == id) throw new IllegalArgumentException("Már van ilyen azonosítóval vonat!");
+        }
         trains.add(new Train(id, name, type, coaches, stops));
+        saveTrainsToJson();
     }
 
     public List<Train> searchTrains(String from, String to){
@@ -144,16 +142,28 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         Ticket newTicket;
 
         if (!t.getType().equals("Személy")) {
-            int price = isFirstClass ? 2 * seatPrice : seatPrice;
+            int seatFee = isFirstClass ? 2 * seatPrice : seatPrice;
             
+            int finalPrice = seatFee;
+
             if (passId == null || passId.strip().isEmpty()) {
-                price = seatAndTicketPrice;
+                int ticketFee = seatAndTicketPrice - seatPrice;
+
+                if(isFirstClass) ticketFee *= 2; 
+
+                finalPrice += ticketFee;
             }
 
-            // Fontos: seat[0] = Kocsi ID, seat[1] = szék
-            newTicket = new Reservation(ticketID++, t.getId(), price, passengerName, t.getStopByName(fromStation), t.getStopByName(toStation), seat[0], seat[1], passId);
+            //seat[0] = Kocsi ID, seat[1] = szék
+            newTicket = new Reservation(ticketID++, t.getId(), finalPrice, passengerName, t.getStopByName(fromStation), t.getStopByName(toStation), seat[0], seat[1], passId);
             
         } else {
+
+            if (passId != null && !passId.strip().isEmpty()) {
+                System.out.println(passengerName + " rendelkezik bérlettel, személyvonatra nem szükséges jegyvásárlás.");
+                return;
+            }
+
             int price = isFirstClass ? 2 * seatAndTicketPrice : seatAndTicketPrice;
             newTicket = new Ticket(ticketID++, t.getId(), price, passengerName, t.getStopByName(fromStation), t.getStopByName(toStation));
         }
@@ -242,11 +252,8 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
 
     public void saveTrainsToJson() {
         try (Writer writer = new FileWriter(DB_FILE)) {
-            // A setPrettyPrinting() miatt szépen tördelt, olvasható JSON lesz
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             
-            // Ez az EGYETLEN sor végzi a varázslatot:
-            // Végigmegy a listán, a vonatokon, a kocsikon, a székeken, és mindent átalakít szöveggé.
             gson.toJson(this.trains, writer);
             
             System.out.println("Adatbázis sikeresen mentve: " + DB_FILE);
@@ -266,13 +273,10 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         try (Reader reader = new FileReader(DB_FILE)) {
             Gson gson = new Gson();
             
-            // Meg kell mondani a Gson-nak, hogy pontosan MILYEN típusú listát várunk vissza
-            // (Mivel a List<Train> generikus típus)
             Type listType = new TypeToken<LinkedList<Train>>(){}.getType();
             
             this.trains = gson.fromJson(reader, listType);
             
-            // Null check, ha esetleg üres lenne a fájl
             if (this.trains == null) {
                 this.trains = new LinkedList<>();
             }
@@ -281,8 +285,30 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
             
         } catch (IOException e) {
             System.err.println("Hiba a betöltés során: " + e.getMessage());
-            this.trains = new LinkedList<>(); // Hiba esetén üres lista, hogy ne fagyjon le
+            this.trains = new LinkedList<>(); 
         }
+    }
+
+
+    public void deleteTrainByIndex(int id) {
+        int ind = -1;
+        for (int i = 0; i < this.trains.size(); i++) {
+            if(this.trains.get(i).getId() == id) ind = i;
+        }
+        if(ind == -1) throw new IllegalArgumentException("Nincs ilyen vonat");
+        this.trains.remove(ind);
+        saveTrainsToJson();
+    }
+
+
+    public void resetReservation(int id) {
+        int ind = -1;
+        for (int i = 0; i < this.trains.size(); i++) {
+            if(this.trains.get(i).getId() == id) ind = i;
+        }
+        if(ind == -1) throw new IllegalArgumentException("Nincs ilyen vonat");
+        this.trains.get(ind).resetReservations();
+        saveTrainsToJson();
     }
 
 }

@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import train.Coach;
-import train.Stop;
 import train.Train;
 import train.TrainHandler;
 import utilities.PurchaseController;
@@ -20,10 +18,8 @@ public class TicketMenu extends JDialog {
     private List<JCheckBox> passCheckFields = new ArrayList<>();
     private List<JTextField> passIdFields = new ArrayList<>();
     private JSpinner passengerNumSpinner;
-    private JComboBox<String> reserveSelector;
 
     private JPanel currentPanel;
-    private JLabel coachInfoLabel;
     private JComboBox<String> honnanBox;
     private JComboBox<String> hovaBox;
     private TrainHandler trainHandler;
@@ -78,6 +74,7 @@ public class TicketMenu extends JDialog {
 
         gbc.gridx = 1; gbc.weightx = 0.7;
         hovaBox = new JComboBox<>(allomasok);
+        hovaBox.setEditable(true);
         ModernComponents.styleComponent(hovaBox); 
         if (hovaBox.getItemCount() > 1) hovaBox.setSelectedIndex(1); 
         mainPanel.add(hovaBox, gbc);

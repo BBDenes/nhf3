@@ -1,9 +1,8 @@
 package train;
-import java.io.Serializable;
 
-import utilities.*;
+import utilities.Time;
 
-public class Stop implements Serializable{
+public class Stop{
     private String name;
     private Time arrive, leave;
 
@@ -33,4 +32,7 @@ public class Stop implements Serializable{
                 ", arrive=" + arrive +
                 ", leave=" + leave;
     }
+
+    
+
 }

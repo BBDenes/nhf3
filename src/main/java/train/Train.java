@@ -15,6 +15,8 @@ public class Train {
     private List<Stop> stops;
     private List<String> services;
     public static final String FIRST_CLASS_TXT = "First class coach";
+    public static final String BUFFET_CAR_TXT = "Buffet coach";
+
 
     public Train(int id, String name,String type, List<Coach> coaches, List<Stop> stops){
         this.id = id;
@@ -26,7 +28,7 @@ public class Train {
 
         for (Coach c : this.coaches) {
             if(c.isFirstClass()) if(!services.contains(FIRST_CLASS_TXT)) services.add(FIRST_CLASS_TXT);
-            if(c.isBuffetCar()) if(!services.contains("Buffet coach")) services.add("Buffet coach");
+            if(c.isBuffetCar()) if(!services.contains(BUFFET_CAR_TXT)) services.add(BUFFET_CAR_TXT);
         }
     }
 
@@ -42,6 +44,10 @@ public class Train {
         if(c != null){
             this.coaches.add(c);
         }else{throw new IllegalArgumentException("Coach is null!");}
+        for (Coach coach : this.coaches) {
+            if(coach.isFirstClass()) if(!services.contains(FIRST_CLASS_TXT)) services.add(FIRST_CLASS_TXT);
+            if(coach.isBuffetCar()) if(!services.contains("Buffet coach")) services.add("Buffet coach");
+        }
     }
 
     public void setName(String name){
@@ -75,12 +81,19 @@ public class Train {
     }
 
     public Stop getStopByName(String stationName) {
-    for (Stop s : this.stops) {
-        if (s.getName().equalsIgnoreCase(stationName)) {
-            return s;
+        for (Stop s : this.stops) {
+            if (s.getName().equalsIgnoreCase(stationName)) {
+                return s;
+            }
         }
+        return null; 
     }
-    return null; 
-}
+
+    public void resetReservations(){
+        for (Coach c : this.coaches) {
+            c.resetReservations();
+        }
+        
+    }
 
 }

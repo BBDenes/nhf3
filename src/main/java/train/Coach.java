@@ -1,13 +1,12 @@
 package train;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import tickets.*;
 
-public class Coach implements Serializable {
+public class Coach{
     private int id;
     private int capacity;
     private int bicycleCapacity;
@@ -106,6 +105,7 @@ public class Coach implements Serializable {
         }
         this.tickets.add(t);
         this.reservedSeats.add(seats.get(0).getId());
+        refreshAvailableSeats();
         
     }
 
@@ -133,6 +133,15 @@ public class Coach implements Serializable {
             szek = rand.nextInt(1, this.seats.size());
         } while (reservedSeats.contains(szek));
         return szek;
+    }
+
+    public void resetReservations(){
+        this.available = this.capacity;
+        this.tickets = new ArrayList<>();
+        this.reservedSeats = new ArrayList<>();
+        for (Seat s : this.seats) {
+            s.setReserved(false);
+        }
     }
 
 }

@@ -1,261 +1,52 @@
 [
   {
-    "id": 920,
-    "name": "Savaria nincskocsi",
-    "type": "Személy",
-    "coaches": [
-      {
-        "id": 411,
-        "capacity": 20,
-        "bicycleCapacity": 0,
-        "wheelchairCapacity": 1,
-        "available": 20,
-        "firstClass": false,
-        "buffetCar": false,
-        "tickets": [],
-        "seats": [
-          {
-            "id": 1,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 2,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 3,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 4,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 5,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 6,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 7,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 8,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 9,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 10,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 11,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 12,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 13,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 14,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 15,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 16,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": false,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 17,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 18,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 19,
-            "coachId": 411,
-            "position": "WINDOW",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          },
-          {
-            "id": 20,
-            "coachId": 411,
-            "position": "CORRIDOR",
-            "atTable": true,
-            "reserved": false,
-            "isSelected": false
-          }
-        ],
-        "reservedSeats": []
-      }
-    ],
-    "stops": [
-      {
-        "name": "Budapest",
-        "arrive": {
-          "hour": 10,
-          "minute": 10
-        },
-        "leave": {
-          "hour": 10,
-          "minute": 10
-        }
-      },
-      {
-        "name": "Debrecen",
-        "arrive": {
-          "hour": 20,
-          "minute": 10
-        },
-        "leave": {
-          "hour": 20,
-          "minute": 10
-        }
-      }
-    ],
-    "services": []
-  },
-  {
-    "id": 69,
-    "name": "Esku jo nincsbicikli",
+    "id": 924,
+    "name": "Savaria",
     "type": "IC",
     "coaches": [
       {
         "id": 411,
-        "capacity": 20,
+        "capacity": 50,
         "bicycleCapacity": 0,
-        "wheelchairCapacity": 1,
-        "available": 19,
-        "firstClass": false,
+        "wheelchairCapacity": 0,
+        "available": 49,
+        "firstClass": true,
         "buffetCar": false,
         "tickets": [
           {
-            "seatNum": 18,
-            "coachNum": 411,
-            "type": "WITHOUT_PASS",
-            "passId": "",
-            "id": 0,
-            "trainId": 69,
-            "price": 1650,
-            "passengerName": "asd",
+            "id": 1,
+            "trainId": 924,
+            "price": 1300,
+            "passengerName": "ASd",
             "from": {
-              "name": "Budapest",
+              "name": "Budapest-Kelenföld",
               "arrive": {
-                "hour": 11,
-                "minute": 10
+                "hour": 10,
+                "minute": 28
               },
               "leave": {
-                "hour": 11,
-                "minute": 10
+                "hour": 10,
+                "minute": 29
               }
             },
             "to": {
-              "name": "Debrecen",
+              "name": "Győr",
               "arrive": {
-                "hour": 21,
-                "minute": 10
+                "hour": 11,
+                "minute": 36
               },
               "leave": {
-                "hour": 21,
-                "minute": 10
+                "hour": 11,
+                "minute": 39
               }
             },
             "timeOfLeave": {
-              "hour": 11,
-              "minute": 10
+              "hour": 10,
+              "minute": 29
             },
             "timeOfArrival": {
-              "hour": 21,
-              "minute": 10
+              "hour": 11,
+              "minute": 36
             }
           }
         ],
@@ -345,7 +136,7 @@
             "coachId": 411,
             "position": "WINDOW",
             "atTable": false,
-            "reserved": false,
+            "reserved": true,
             "isSelected": false
           },
           {
@@ -392,7 +183,7 @@
             "id": 17,
             "coachId": 411,
             "position": "WINDOW",
-            "atTable": true,
+            "atTable": false,
             "reserved": false,
             "isSelected": false
           },
@@ -400,12 +191,236 @@
             "id": 18,
             "coachId": 411,
             "position": "CORRIDOR",
-            "atTable": true,
-            "reserved": true,
+            "atTable": false,
+            "reserved": false,
             "isSelected": false
           },
           {
             "id": 19,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 20,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 21,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 22,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 23,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 24,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 25,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 26,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 27,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 28,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 29,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 30,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 31,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 32,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 33,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 34,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 35,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 36,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 37,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 38,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 39,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 40,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 41,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 42,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 43,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 44,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 45,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 46,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 47,
             "coachId": 411,
             "position": "WINDOW",
             "atTable": true,
@@ -413,7 +428,23 @@
             "isSelected": false
           },
           {
-            "id": 20,
+            "id": 48,
+            "coachId": 411,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 49,
+            "coachId": 411,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 50,
             "coachId": 411,
             "position": "CORRIDOR",
             "atTable": true,
@@ -422,52 +453,56 @@
           }
         ],
         "reservedSeats": [
-          18
+          11
         ]
       },
       {
         "id": 412,
-        "capacity": 40,
-        "bicycleCapacity": 0,
-        "wheelchairCapacity": 0,
-        "available": 39,
+        "capacity": 70,
+        "bicycleCapacity": 9,
+        "wheelchairCapacity": 2,
+        "available": 69,
         "firstClass": false,
-        "buffetCar": true,
+        "buffetCar": false,
         "tickets": [
           {
+            "seatNum": 11,
+            "coachNum": 412,
+            "type": "WITH_PASS",
+            "passId": "apadfasza",
             "id": 0,
-            "trainId": 69,
-            "price": 1650,
-            "passengerName": "asd",
+            "trainId": 924,
+            "price": 650,
+            "passengerName": "Lázár Jancsi",
             "from": {
-              "name": "Budapest",
+              "name": "Tata",
               "arrive": {
                 "hour": 11,
-                "minute": 10
+                "minute": 6
               },
               "leave": {
                 "hour": 11,
-                "minute": 10
+                "minute": 7
               }
             },
             "to": {
-              "name": "Debrecen",
+              "name": "Győr",
               "arrive": {
-                "hour": 21,
-                "minute": 10
+                "hour": 11,
+                "minute": 36
               },
               "leave": {
-                "hour": 21,
-                "minute": 10
+                "hour": 11,
+                "minute": 39
               }
             },
             "timeOfLeave": {
               "hour": 11,
-              "minute": 10
+              "minute": 7
             },
             "timeOfArrival": {
-              "hour": 21,
-              "minute": 10
+              "hour": 11,
+              "minute": 36
             }
           }
         ],
@@ -557,7 +592,7 @@
             "coachId": 412,
             "position": "WINDOW",
             "atTable": false,
-            "reserved": false,
+            "reserved": true,
             "isSelected": false
           },
           {
@@ -764,15 +799,15 @@
             "id": 37,
             "coachId": 412,
             "position": "WINDOW",
-            "atTable": true,
-            "reserved": true,
+            "atTable": false,
+            "reserved": false,
             "isSelected": false
           },
           {
             "id": 38,
             "coachId": 412,
             "position": "CORRIDOR",
-            "atTable": true,
+            "atTable": false,
             "reserved": false,
             "isSelected": false
           },
@@ -780,12 +815,252 @@
             "id": 39,
             "coachId": 412,
             "position": "WINDOW",
-            "atTable": true,
+            "atTable": false,
             "reserved": false,
             "isSelected": false
           },
           {
             "id": 40,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 41,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 42,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 43,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 44,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 45,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 46,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 47,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 48,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 49,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 50,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 51,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 52,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 53,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 54,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 55,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 56,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 57,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 58,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 59,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 60,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 61,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 62,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 63,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 64,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 65,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 66,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 67,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 68,
+            "coachId": 412,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 69,
+            "coachId": 412,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 70,
             "coachId": 412,
             "position": "CORRIDOR",
             "atTable": true,
@@ -794,36 +1069,2458 @@
           }
         ],
         "reservedSeats": [
-          37
+          11
+        ]
+      },
+      {
+        "id": 413,
+        "capacity": 70,
+        "bicycleCapacity": 0,
+        "wheelchairCapacity": 0,
+        "available": 69,
+        "firstClass": false,
+        "buffetCar": false,
+        "tickets": [
+          {
+            "id": 2,
+            "trainId": 924,
+            "price": 650,
+            "passengerName": "Én",
+            "from": {
+              "name": "Budapest-Kelenföld",
+              "arrive": {
+                "hour": 10,
+                "minute": 28
+              },
+              "leave": {
+                "hour": 10,
+                "minute": 29
+              }
+            },
+            "to": {
+              "name": "Szombathely",
+              "arrive": {
+                "hour": 12,
+                "minute": 49
+              },
+              "leave": {
+                "hour": 12,
+                "minute": 49
+              }
+            },
+            "timeOfLeave": {
+              "hour": 10,
+              "minute": 29
+            },
+            "timeOfArrival": {
+              "hour": 12,
+              "minute": 49
+            }
+          }
+        ],
+        "seats": [
+          {
+            "id": 1,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 2,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 3,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 4,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 5,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 6,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 7,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 8,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 9,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 10,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 11,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": true,
+            "isSelected": false
+          },
+          {
+            "id": 12,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 13,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 14,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 15,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 16,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 17,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 18,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 19,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 20,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 21,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 22,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 23,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 24,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 25,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 26,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 27,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 28,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 29,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 30,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 31,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 32,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 33,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 34,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 35,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 36,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 37,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 38,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 39,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 40,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 41,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 42,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 43,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 44,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 45,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 46,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 47,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 48,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 49,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 50,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 51,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 52,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 53,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 54,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 55,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 56,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 57,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 58,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 59,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 60,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 61,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 62,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 63,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 64,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 65,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 66,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 67,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 68,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 69,
+            "coachId": 413,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 70,
+            "coachId": 413,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          }
+        ],
+        "reservedSeats": [
+          11
         ]
       }
     ],
     "stops": [
       {
-        "name": "Budapest",
+        "name": "Budapest-Keleti",
         "arrive": {
-          "hour": 11,
-          "minute": 10
+          "hour": 10,
+          "minute": 13
         },
         "leave": {
-          "hour": 11,
-          "minute": 10
+          "hour": 10,
+          "minute": 13
         }
       },
       {
-        "name": "Debrecen",
+        "name": "Budapest-Kelenföld",
         "arrive": {
-          "hour": 21,
-          "minute": 10
+          "hour": 10,
+          "minute": 28
         },
         "leave": {
-          "hour": 21,
-          "minute": 10
+          "hour": 10,
+          "minute": 29
+        }
+      },
+      {
+        "name": "Tatabánya",
+        "arrive": {
+          "hour": 10,
+          "minute": 59
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 0
+        }
+      },
+      {
+        "name": "Tata",
+        "arrive": {
+          "hour": 11,
+          "minute": 6
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 7
+        }
+      },
+      {
+        "name": "Komárom",
+        "arrive": {
+          "hour": 11,
+          "minute": 18
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 19
+        }
+      },
+      {
+        "name": "Győr",
+        "arrive": {
+          "hour": 11,
+          "minute": 36
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 39
+        }
+      },
+      {
+        "name": "Csorna",
+        "arrive": {
+          "hour": 11,
+          "minute": 58
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 59
+        }
+      },
+      {
+        "name": "Répcelak",
+        "arrive": {
+          "hour": 12,
+          "minute": 18
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 19
+        }
+      },
+      {
+        "name": "Szombathely",
+        "arrive": {
+          "hour": 12,
+          "minute": 49
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 49
         }
       }
     ],
     "services": [
-      "Buffet coach"
+      "First class coach"
     ]
+  },
+  {
+    "id": 4924,
+    "name": "S10",
+    "type": "Személy",
+    "coaches": [
+      {
+        "id": 1,
+        "capacity": 200,
+        "bicycleCapacity": 11,
+        "wheelchairCapacity": 11,
+        "available": 200,
+        "firstClass": false,
+        "buffetCar": false,
+        "tickets": [],
+        "seats": [
+          {
+            "id": 1,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 2,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 3,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 4,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 5,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 6,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 7,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 8,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 9,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 10,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 11,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 12,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 13,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 14,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 15,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 16,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 17,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 18,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 19,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 20,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 21,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 22,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 23,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 24,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 25,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 26,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 27,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 28,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 29,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 30,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 31,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 32,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 33,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 34,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 35,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 36,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 37,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 38,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 39,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 40,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 41,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 42,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 43,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 44,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 45,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 46,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 47,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 48,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 49,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 50,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 51,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 52,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 53,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 54,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 55,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 56,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 57,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 58,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 59,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 60,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 61,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 62,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 63,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 64,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 65,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 66,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 67,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 68,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 69,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 70,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 71,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 72,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 73,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 74,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 75,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 76,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 77,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 78,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 79,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 80,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 81,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 82,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 83,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 84,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 85,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 86,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 87,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 88,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 89,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 90,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 91,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 92,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 93,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 94,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 95,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 96,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 97,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 98,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 99,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 100,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 101,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 102,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 103,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 104,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 105,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 106,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 107,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 108,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 109,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 110,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 111,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 112,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 113,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 114,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 115,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 116,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 117,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 118,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 119,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 120,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 121,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 122,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 123,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 124,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 125,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 126,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 127,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 128,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 129,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 130,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 131,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 132,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 133,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 134,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 135,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 136,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 137,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 138,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 139,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 140,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 141,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 142,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 143,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 144,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 145,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 146,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 147,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 148,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 149,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 150,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 151,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 152,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 153,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 154,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 155,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 156,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 157,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 158,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 159,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 160,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 161,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 162,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 163,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 164,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 165,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 166,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 167,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 168,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 169,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 170,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 171,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 172,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 173,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 174,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 175,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 176,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 177,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 178,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 179,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 180,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 181,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 182,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 183,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 184,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 185,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 186,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 187,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 188,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 189,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 190,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 191,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 192,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 193,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 194,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 195,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 196,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": false,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 197,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 198,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 199,
+            "coachId": 1,
+            "position": "WINDOW",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          },
+          {
+            "id": 200,
+            "coachId": 1,
+            "position": "CORRIDOR",
+            "atTable": true,
+            "reserved": false,
+            "isSelected": false
+          }
+        ],
+        "reservedSeats": []
+      }
+    ],
+    "stops": [
+      {
+        "name": "Budapest-Déli",
+        "arrive": {
+          "hour": 11,
+          "minute": 25
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 25
+        }
+      },
+      {
+        "name": "Budapest-Kelenföld",
+        "arrive": {
+          "hour": 11,
+          "minute": 31
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 32
+        }
+      },
+      {
+        "name": "Budaörs",
+        "arrive": {
+          "hour": 11,
+          "minute": 36
+        },
+        "leave": {
+          "hour": 11,
+          "minute": 40
+        }
+      },
+      {
+        "name": "Tatabánya",
+        "arrive": {
+          "hour": 12,
+          "minute": 16
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 17
+        }
+      },
+      {
+        "name": "Tóvároskert",
+        "arrive": {
+          "hour": 12,
+          "minute": 23
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 23
+        }
+      },
+      {
+        "name": "Tata",
+        "arrive": {
+          "hour": 12,
+          "minute": 25
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 26
+        }
+      },
+      {
+        "name": "Almásfüzitő",
+        "arrive": {
+          "hour": 12,
+          "minute": 33
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 40
+        }
+      },
+      {
+        "name": "Komárom",
+        "arrive": {
+          "hour": 12,
+          "minute": 52
+        },
+        "leave": {
+          "hour": 12,
+          "minute": 53
+        }
+      },
+      {
+        "name": "Győr-Gyárváros",
+        "arrive": {
+          "hour": 13,
+          "minute": 14
+        },
+        "leave": {
+          "hour": 13,
+          "minute": 14
+        }
+      },
+      {
+        "name": "Győr",
+        "arrive": {
+          "hour": 13,
+          "minute": 19
+        },
+        "leave": {
+          "hour": 13,
+          "minute": 19
+        }
+      }
+    ],
+    "services": []
   }
 ]

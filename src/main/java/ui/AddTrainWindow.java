@@ -197,17 +197,47 @@ public class AddTrainWindow extends JDialog {
         saveButton.addActionListener(e -> {
             try{
                 int newId = Integer.parseInt(idField.getText());
+
                 th.addTrain(newId, nameField.getText(), (String) typeSelect.getSelectedItem() , coachesToAdd, stopsToAdd);
                 System.out.println("Vonat hozzaadva");
                 dispose();
-            }catch(Exception trainException) {System.out.println("Szar a vonatod ocsi: " + trainException.getMessage());}
+            }catch(Exception trainException) {
+                JOptionPane.showMessageDialog(saveButton, "Hiba: " + trainException.getMessage());
+            }
         });
         
         JButton cancelButton = ModernComponents.createModernButton("Mégsem", new Color(100, 100, 100), Color.WHITE);
         cancelButton.addActionListener(e -> dispose());
 
+        JButton resetTrainButton = ModernComponents.createModernButton("Vonat visszaállítása", Color.RED, ModernComponents.TEXT_COLOR);
+        resetTrainButton.addActionListener(e-> {
+            int id = Integer.parseInt(JOptionPane.showInputDialog("Adja meg a vonat számát: "));
+            try {
+                th.resetReservation(id);
+                JOptionPane.showMessageDialog(resetTrainButton, "Vonat alaphelyzetbe állítva.","Siker!", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception exc) {
+                JOptionPane.showMessageDialog(resetTrainButton, "Nincs ilyen vonat!","Hiba", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        });
+
+        JButton deleteTrainBtn = ModernComponents.createModernButton("Vonat törlése", Color.RED, ModernComponents.TEXT_COLOR);
+        deleteTrainBtn.addActionListener(e->{
+            int id = Integer.parseInt(JOptionPane.showInputDialog("Adja meg a vonat számát: "));
+            try {
+                th.deleteTrainByIndex(id);
+                JOptionPane.showMessageDialog(resetTrainButton,"Vonat törölve.","Siker!", JOptionPane.INFORMATION_MESSAGE);
+            
+            } catch (Exception exc) {
+                JOptionPane.showMessageDialog(deleteTrainBtn, "Nincs ilyen vonat!","Hiba", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+
         bottomPanel.add(cancelButton);
         bottomPanel.add(saveButton);
+        bottomPanel.add(resetTrainButton);
+        bottomPanel.add(deleteTrainBtn);
         
         add(bottomPanel, BorderLayout.SOUTH);
     }

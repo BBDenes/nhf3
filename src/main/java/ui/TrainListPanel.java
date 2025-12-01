@@ -145,16 +145,15 @@ public class TrainListPanel extends JPanel {
         JPanel rightPanel = new JPanel(new GridLayout(2, 1, 0, 5));
         rightPanel.setBackground(new Color(60, 63, 65)); 
         
-        // 2. osztály gomb
         JButton secondClassBtn = ModernComponents.createModernButton("2. osztályú jegy", ModernComponents.BUTTON_COLOR, Color.WHITE);
         secondClassBtn.addActionListener(e -> {
             purchase.setTrain(v.getId());
             purchase.setFirstClass(false);
-            handleNavigation(); // Helyi navigációs döntés
+            handleNavigation(); 
         });
-        rightPanel.add(secondClassBtn);
         
-        // 1. osztály gomb (ha van)
+        rightPanel.add(secondClassBtn);
+        System.out.println("Vonat szolgáltatások: " + v.getServices());
         if(v.getServices().contains(Train.FIRST_CLASS_TXT)){
             JButton firstClassBtn = ModernComponents.createModernButton("1. osztályú jegy", ModernComponents.BUTTON_COLOR, Color.WHITE);
             firstClassBtn.addActionListener(e -> {
@@ -169,10 +168,7 @@ public class TrainListPanel extends JPanel {
         return card;
     }
 
-    /**
-     * Ez a metódus olvassa ki a ComboBox-ot és hívja meg a megfelelő
-     * metódust a TicketMenu-ben.
-     */
+
     private void handleNavigation() {
         String mode = (String) reserveSelector.getSelectedItem();
         System.out.println("Navigáció: " + mode);

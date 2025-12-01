@@ -3,8 +3,6 @@ package ui;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 
 import train.Train;
@@ -31,7 +29,6 @@ public class SummaryPanel extends JPanel {
     }
 
     private void initUI() {
-        // --- 1. FEJLÉC ---
         JPanel headerPanel = new JPanel(new GridBagLayout());
         headerPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
         headerPanel.setBorder(new EmptyBorder(20, 20, 10, 20));
@@ -44,15 +41,13 @@ public class SummaryPanel extends JPanel {
         title.setForeground(ModernComponents.TEXT_COLOR);
         headerPanel.add(title, gbc);
 
-        // Vonat információk megjelenítése
         gbc.gridy++;
         gbc.insets = new Insets(10, 0, 0, 0);
         Train train = trainHandler.getTrainByIndex(purchase.getTrainId());
         if (train != null) {
-            String services = "Vonat: " + train.getName() + " (" + train.getType() + ") | Szolgáltatások: ";
-            if (train.getServices().contains("Buffet") || train.getServices().contains("Bufe")) services += "☕ ";
-            if (train.getServices().contains("FirstClass") || train.getServices().contains("1")) services += "💎 ";
-            if (train.getServices().contains("Wifi")) services += "📶 ";
+            String services = "Vonat: " + purchase.getStops().get(0) + "-> " + purchase.getStops().get(1) + " | " + train.getName() + " " + train.getType() + " | Szolgáltatások: ";
+            if (train.getServices().contains("Buffet") || train.getServices().contains("Bufe")) services += "Büfé ";
+            if (train.getServices().contains("FirstClass") || train.getServices().contains("1")) services += "1.o ";
             
             JLabel trainInfo = new JLabel(services);
             trainInfo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -62,7 +57,6 @@ public class SummaryPanel extends JPanel {
 
         add(headerPanel, BorderLayout.NORTH);
 
-        // --- 2. JEGYEK LISTÁJA (KÖZÉP) ---
         JPanel ticketsContainer = new JPanel(new GridBagLayout());
         ticketsContainer.setBackground(ModernComponents.BACKGROUND_COLOR);
         
@@ -88,7 +82,6 @@ public class SummaryPanel extends JPanel {
             }
         }
         
-        // Kitöltő elem, hogy a kártyák fentre kerüljenek
         listGbc.weighty = 1.0;
         ticketsContainer.add(Box.createGlue(), listGbc);
 
@@ -109,29 +102,18 @@ public class SummaryPanel extends JPanel {
         priceLabel.setBorder(new EmptyBorder(0, 0, 10, 0));
         footerPanel.add(priceLabel, BorderLayout.NORTH);
 
-        // Gombok
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttons.setBackground(ModernComponents.BACKGROUND_COLOR);
-
-        JButton btnBack = ModernComponents.createModernButton("Vissza", Color.GRAY, Color.WHITE);
-        btnBack.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "A visszalépés törli a kosarat!");
-             // Itt opcionálisan ürítheted a purchase listát
-        });
 
         JButton btnBuy = ModernComponents.createModernButton("VÁSÁRLÁS BEFEJEZÉSE", ModernComponents.BUTTON_COLOR, Color.WHITE);
         btnBuy.addActionListener(e -> finalizePurchase());
 
-        buttons.add(btnBack);
         buttons.add(btnBuy);
         footerPanel.add(buttons, BorderLayout.SOUTH);
 
         add(footerPanel, BorderLayout.SOUTH);
     }
 
-    /**
-     * Egyetlen jegy kártyájának kirajzolása
-     */
     private JPanel createTicketCard(Ticket t) {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(new Color(60, 63, 65));
@@ -140,7 +122,6 @@ public class SummaryPanel extends JPanel {
             new EmptyBorder(15, 15, 15, 15)
         ));
 
-        // Bal oldal: Utas és Útvonal
         JPanel left = new JPanel(new GridLayout(2, 1, 0, 5));
         left.setBackground(new Color(60, 63, 65));
         
@@ -149,6 +130,7 @@ public class SummaryPanel extends JPanel {
         nameLbl.setForeground(Color.WHITE);
         
         String details = "";
+        details += t.getTicketType();
         if (t instanceof Reservation) {
             Reservation res = (Reservation) t;
             details += " | Kocsi: " + res.getCoach() + " | Hely: " + res.getSeat();
@@ -177,13 +159,11 @@ public class SummaryPanel extends JPanel {
     }
 
     private void finalizePurchase() {
-        List<Ticket> tickets = purchase.getTicketsToBuy();
-        
         trainHandler.finalizeBooking(purchase);
-
+        for (Ticket t : purchase.getTicketsToBuy()) {
+            t.writeToHtml(); 
+        }
         JOptionPane.showMessageDialog(this, "Vásárlás sikeres!\nA jegyeket elmentettük fájlokba.", "Siker", JOptionPane.INFORMATION_MESSAGE);
-        
-        // Ablak bezárása
         controller.dispose();
     }
 }
