@@ -2,6 +2,11 @@ package train;
 
 import utilities.Time;
 
+/**
+ * Megálló osztály, amely egy vonat megállóját reprezentálja.
+ * Tartalmazza a megálló nevét, érkezési és indulási időpontját.
+*/
+
 public class Stop{
     private String name;
     private Time arrive, leave;
