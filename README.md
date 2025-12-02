@@ -3,239 +3,232 @@
 
 ```mermaid
 classDiagram
-    %% --- CSOMAG: vonatjegy ---
-    namespace vonatjegy {
-        class Main {
-            +main(String[] args)
-        }
-    }
+   
+	class Main {
+		+main(String[] args)
+	}
+    
 
-    %% --- CSOMAG: utilities ---
-    namespace utilities {
-        class Time {
-            -int hour
-            -int minute
-            +Time(int h, int m)
-            +Time(String t)
-            +getHour() int
-            +getMinute() int
-            +compareTo(Time other) int
-            +toString() String
-        }
+	class Time {
+		-int hour
+		-int minute
+		+Time(int h, int m)
+		+Time(String t)
+		+getHour() int
+		+getMinute() int
+		+compareTo(Time other) int
+		+toString() String
+	}
 
-        class PurchaseController {
-            -int maxSeats
-            -String from
-            -String to
-            -int numOfPassengers
-            -List~String~ names
-            -List~String~ passIds
-            -int trainId
-            -boolean isFirstClass
-            -List~Boolean~ accessibleMask
-            -List~Boolean~ bycicleMask
-            -List~Ticket~ ticketsToBuy
-            -List~Integer~ seatsToReserve
-            +getGlobalSeatId(int coachId, int seatId) int
-            +getSeatFromGlobalId(int gId) int[]
-            +addTicketToBuy(Ticket t)
-            +getTicketsToBuy() List~Ticket~
-            +setStops(String from, String to)
-            +setPassengers(List~String~ names, List~String~ passIds)
-            +setTrain(int trainId)
-            +setFirstClass(boolean isFirstClass)
-            +setMasks(List~Boolean~ accessibleMask, List~Boolean~ bycicleMask)
-            +setSeatsToReserve(List~Integer~ seats)
-        }
-    }
+	class PurchaseController {
+		-int maxSeats
+		-String from
+		-String to
+		-int numOfPassengers
+		-List~String~ names
+		-List~String~ passIds
+		-int trainId
+		-boolean isFirstClass
+		-List~Boolean~ accessibleMask
+		-List~Boolean~ bycicleMask
+		-List~Ticket~ ticketsToBuy
+		-List~Integer~ seatsToReserve
+		+getGlobalSeatId(int coachId, int seatId) int
+		+getSeatFromGlobalId(int gId) int[]
+		+addTicketToBuy(Ticket t)
+		+getTicketsToBuy() List~Ticket~
+		+setStops(String from, String to)
+		+setPassengers(List~String~ names, List~String~ passIds)
+		+setTrain(int trainId)
+		+setFirstClass(boolean isFirstClass)
+		+setMasks(List~Boolean~ accessibleMask, List~Boolean~ bycicleMask)
+		+setSeatsToReserve(List~Integer~ seats)
+	}
 
-    %% --- CSOMAG: tickets ---
-    namespace tickets {
-        class Ticket {
-            #int id
-            #int trainId
-            #int price
-            #String passengerName
-            #Stop from
-            #Stop to
-            #Time timeOfLeave
-            #Time timeOfArrival
-            +Ticket(int id, int trainId, int price, String passengerName, Stop from, Stop to)
-            +getTicketType() String
-            +writeToHtml()
-            #writeRow(FileWriter w, String label, String value)
-            #getExtraDetails() String
-        }
 
-        class Reservation {
-            -int seatNum
-            -int coachNum
-            -Type type
-            -String passId
-            +Reservation(...)
-            +getSeat() int
-            +getCoach() int
-            +getPassId() String
-            +getExtraDetails() String
-        }
+    
+	class Ticket {
+		#int id
+		#int trainId
+		#int price
+		#String passengerName
+		#Stop from
+		#Stop to
+		#Time timeOfLeave
+		#Time timeOfArrival
+		+Ticket(int id, int trainId, int price, String passengerName, Stop from, Stop to)
+		+getTicketType() String
+		+writeToHtml()
+		#writeRow(FileWriter w, String label, String value)
+		#getExtraDetails() String
+	}
 
-        class ReservationType {
-            <<enumeration>>
-            WITH_PASS
-            WITHOUT_PASS
-        }
-    }
+	class Reservation {
+		-int seatNum
+		-int coachNum
+		-Type type
+		-String passId
+		+Reservation(...)
+		+getSeat() int
+		+getCoach() int
+		+getPassId() String
+		+getExtraDetails() String
+	}
 
-    %% --- CSOMAG: train ---
-    namespace train {
-        class Train {
-            -int id
-            -String name
-            -String type
-            -List~Coach~ coaches
-            -List~Stop~ stops
-            -List~String~ services
-            +Train(...)
-            +addCoach(Coach c)
-            +removeCoach(Coach c)
-            +getStopByName(String stationName) Stop
-            +resetReservations()
-        }
+	class ReservationType {
+		<<enumeration>>
+		WITH_PASS
+		WITHOUT_PASS
+	}
 
-        class Coach {
-            -int id
-            -int capacity
-            -int bicycleCapacity
-            -int wheelchairCapacity
-            -int available
-            -boolean firstClass
-            -boolean buffetCar
-            -List~Ticket~ tickets
-            -List~Seat~ seats
-            -List~Integer~ reservedSeats
-            +Coach(...)
-            +addTicket(Reservation t)
-            +generateAvailableSeat() int
-            +resetReservations()
-        }
 
-        class Seat {
-            -int id
-            -int coachId
-            -Position position
-            -boolean atTable
-            -boolean reserved
-            -boolean isSelected
-            +Seat(int id, int coachId)
-            +toggleSelect()
-        }
+    
+	class Train {
+		-int id
+		-String name
+		-String type
+		-List~Coach~ coaches
+		-List~Stop~ stops
+		-List~String~ services
+		+Train(...)
+		+addCoach(Coach c)
+		+removeCoach(Coach c)
+		+getStopByName(String stationName) Stop
+		+resetReservations()
+	}
 
-        class SeatPosition {
-            <<enumeration>>
-            WINDOW
-            CORRIDOR
-        }
+	class Coach {
+		-int id
+		-int capacity
+		-int bicycleCapacity
+		-int wheelchairCapacity
+		-int available
+		-boolean firstClass
+		-boolean buffetCar
+		-List~Ticket~ tickets
+		-List~Seat~ seats
+		-List~Integer~ reservedSeats
+		+Coach(...)
+		+addTicket(Reservation t)
+		+generateAvailableSeat() int
+		+resetReservations()
+	}
 
-        class Stop {
-            -String name
-            -Time arrive
-            -Time leave
-            +Stop(String name, Time arrive, Time leave)
-            +Stop(String formattedInput)
-        }
+	class Seat {
+		-int id
+		-int coachId
+		-Position position
+		-boolean atTable
+		-boolean reserved
+		-boolean isSelected
+		+Seat(int id, int coachId)
+		+toggleSelect()
+	}
 
-        class TrainHandler {
-            -List~Train~ trains
-            -int ticketID
-            +TrainHandler()
-            +addTrain(...)
-            +searchTrains(String from, String to) List~Train~
-            +getTrainByIndex(int id) Train
-            +getRandom(int trainId, boolean isFirstClass) int[]
-            +reserveAutomaticSeats(PurchaseController p)
-            +reserveSpecificSeats(PurchaseController p)
-            +finalizeBooking(PurchaseController p)
-            +saveTrainsToJson()
-            +loadTrainsFromJson()
-            +deleteTrainByIndex(int id)
-            +resetReservation(int id)
-            -buyTicket(...)
-            -getSeatByAttribute(...)
-        }
-    }
+	class SeatPosition {
+		<<enumeration>>
+		WINDOW
+		CORRIDOR
+	}
 
-    %% --- CSOMAG: ui ---
-    namespace ui {
-        class ModernComponents {
-            +createStyledLabel(...) JLabel
-            +createModernButton(...) JButton
-            +styleComponent(JComponent comp)
-            +createCoachButton(Coach c) JButton
-            +createSeatButton(...) JButton
-        }
+	class Stop {
+		-String name
+		-Time arrive
+		-Time leave
+		+Stop(String name, Time arrive, Time leave)
+		+Stop(String formattedInput)
+	}
 
-        class MainMenu {
-            -JButton buyTicketButton
-            -JButton editTrainsButton
-            -PurchaseController purchase
-            +MainMenu(TrainHandler th)
-            -renderMainMenu(TrainHandler th)
-        }
+	class TrainHandler {
+		-List~Train~ trains
+		-int ticketID
+		+TrainHandler()
+		+addTrain(...)
+		+searchTrains(String from, String to) List~Train~
+		+getTrainByIndex(int id) Train
+		+getRandom(int trainId, boolean isFirstClass) int[]
+		+reserveAutomaticSeats(PurchaseController p)
+		+reserveSpecificSeats(PurchaseController p)
+		+finalizeBooking(PurchaseController p)
+		+saveTrainsToJson()
+		+loadTrainsFromJson()
+		+deleteTrainByIndex(int id)
+		+resetReservation(int id)
+		-buyTicket(...)
+		-getSeatByAttribute(...)
+	}
+    
 
-        class TicketMenu {
-            -List~JTextField~ utasNevMezok
-            -JSpinner passengerNumSpinner
-            -PurchaseController purchase
-            -TrainHandler trainHandler
-            +TicketMenu(...)
-            -renderSearchMenu()
-            +createPassengersMenu() JPanel
-            +showTrainListPanel(List~Train~ results)
-            +showVisualSeatPanel()
-            +showSummaryPanel()
-            +processAutomaticReservation()
-            +showAttributeSelectionPanel()
-        }
+	class ModernComponents {
+		+createStyledLabel(...) JLabel
+		+createModernButton(...) JButton
+		+styleComponent(JComponent comp)
+		+createCoachButton(Coach c) JButton
+		+createSeatButton(...) JButton
+	}
 
-        class AddTrainWindow {
-            -List~Coach~ coachesToAdd
-            -List~Stop~ stopsToAdd
-            +AddTrainWindow(...)
-            -renderWindow()
-            -renderBasicInfo(JPanel p)
-            -createSectionPanel(...) JPanel
-        }
+	class MainMenu {
+		-JButton buyTicketButton
+		-JButton editTrainsButton
+		-PurchaseController purchase
+		+MainMenu(TrainHandler th)
+		-renderMainMenu(TrainHandler th)
+	}
 
-        class TrainListPanel {
-            -TicketMenu controller
-            -PurchaseController purchase
-            -JComboBox reserveSelector
-            +TrainListPanel(...)
-            -initUI(List~Train~ results)
-            -createTrainCard(...) JPanel
-            -handleNavigation()
-        }
+	class TicketMenu {
+		-List~JTextField~ utasNevMezok
+		-JSpinner passengerNumSpinner
+		-PurchaseController purchase
+		-TrainHandler trainHandler
+		+TicketMenu(...)
+		-renderSearchMenu()
+		+createPassengersMenu() JPanel
+		+showTrainListPanel(List~Train~ results)
+		+showVisualSeatPanel()
+		+showSummaryPanel()
+		+processAutomaticReservation()
+		+showAttributeSelectionPanel()
+	}
 
-        class VisualSeatPanel {
-            -TicketMenu controller
-            -TrainHandler trainHandler
-            -PurchaseController purchase
-            -List~Integer~ reservedSeatIds
-            +VisualSeatPanel(...)
-            -initUI()
-            -renderSeatMap(...)
-        }
+	class AddTrainWindow {
+		-List~Coach~ coachesToAdd
+		-List~Stop~ stopsToAdd
+		+AddTrainWindow(...)
+		-renderWindow()
+		-renderBasicInfo(JPanel p)
+		-createSectionPanel(...) JPanel
+	}
 
-        class SummaryPanel {
-            -TicketMenu controller
-            -PurchaseController purchase
-            -TrainHandler trainHandler
-            +SummaryPanel(...)
-            -initUI()
-            -createTicketCard(Ticket t) JPanel
-            -finalizePurchase()
-        }
-    }
+	class TrainListPanel {
+		-TicketMenu controller
+		-PurchaseController purchase
+		-JComboBox reserveSelector
+		+TrainListPanel(...)
+		-initUI(List~Train~ results)
+		-createTrainCard(...) JPanel
+		-handleNavigation()
+	}
+
+	class VisualSeatPanel {
+		-TicketMenu controller
+		-TrainHandler trainHandler
+		-PurchaseController purchase
+		-List~Integer~ reservedSeatIds
+		+VisualSeatPanel(...)
+		-initUI()
+		-renderSeatMap(...)
+	}
+
+	class SummaryPanel {
+		-TicketMenu controller
+		-PurchaseController purchase
+		-TrainHandler trainHandler
+		+SummaryPanel(...)
+		-initUI()
+		-createTicketCard(Ticket t) JPanel
+		-finalizePurchase()
+	}
+    
 
     %% KAPCSOLATOK
     Main ..> MainMenu : creates

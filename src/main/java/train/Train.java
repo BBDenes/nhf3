@@ -3,7 +3,6 @@ package train;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.NameNotFoundException;
 
 /**
  * Vonat osztály.
