@@ -9,13 +9,33 @@ import train.Train;
 import train.Stop;
 import utilities.PurchaseController;
 
+/**
+ * Panel az elérhető vonatok listázására és a jegyvásárlás indítására.
+ *
+ * A panel felelős a megadott vonatok megjelenítéséért kártya nézetben,
+ * a helyfoglalás módjának kiválasztásáért (automatikus, tulajdonság alapú,
+ * grafikus) valamint a felhasználói navigációért a kapcsolódó TicketMenu
+ * vezérlő felé.
+ *
+ * A panel egy TicketMenu vezérlőt és a PurchaseController-t használja a
+ * vásárlási adatok átadására és a további UI-átmenetek indítására.
+ */
 public class TrainListPanel extends JPanel {
 
+
     private TicketMenu controller;
+
+    
     private PurchaseController purchase;
+
     private JComboBox<String> reserveSelector;
 
-    // Konstruktor: megkapja a Vezérlőt (TicketMenu), az Adatokat (Purchase) és a Listát (Results)
+    /**
+     * Konstruktor a TrainListPanel osztályhoz
+     * @param controller : A szülő TicketMenu példány
+     * @param purchase : A vásárlásvezérlő példány
+     * @param results : A megjelenítendő vonatok listája
+     */
     public TrainListPanel(TicketMenu controller, PurchaseController purchase, List<Train> results) {
         this.controller = controller;
         this.purchase = purchase;
@@ -28,6 +48,13 @@ public class TrainListPanel extends JPanel {
         initUI(results);
     }
     
+    /**
+     * Inicializálja a vizuális elemeket a panelhez a megadott vonatok alapján.
+     * Létrehoz egy cím részt, a vonat kártyákat, a görgethető tartalmat és a
+     * láblécet a vissza gombbal.
+     *
+     * @param results A megjelenítendő vonatok listája (nem lehet null, de lehet üres).
+     */
     private void initUI(List<Train> results) {
         // --- FEJLÉC ---
         List<String> stops = purchase.getStops();
@@ -92,7 +119,6 @@ public class TrainListPanel extends JPanel {
         
         JButton backBtn = ModernComponents.createModernButton("Vissza az utasokhoz", new Color(100, 100, 100), Color.WHITE);
         backBtn.addActionListener(e -> {
-            // Visszahívunk a controllerbe
             controller.createPassengersMenu();
         });
         footer.add(backBtn);
@@ -100,6 +126,16 @@ public class TrainListPanel extends JPanel {
         add(footer, BorderLayout.SOUTH);
     }
 
+    /**
+     * Létrehoz és visszaad egy kártya-szerű JPanel-t, amely a megadott vonat
+     * információit jeleníti meg (név, azonosító, indulás/érkezés időpontok,
+     * szolgáltatások) és a hozzá tartozó jegyvásárlási gombokat.
+     *
+     * @param v A megjelenítendő {@link Train} objektum
+     * @param from Indulási megálló neve
+     * @param to A járat érkezési megállójának neve (a célállomás neve)
+     * @return Egy JPanel, amely tartalmazza a vonat adatait és a jegyvásárló gombokat
+     */
     private JPanel createTrainCard(Train v, String from, String to) {
         JPanel card = new JPanel(new GridBagLayout());
         card.setBackground(new Color(60, 63, 65)); 
@@ -118,7 +154,6 @@ public class TrainListPanel extends JPanel {
         g.fill = GridBagConstraints.HORIZONTAL;
         g.insets = new Insets(2, 5, 2, 5);
 
-        // Bal oldal: Infók
         g.gridx = 0; g.gridy = 0; g.weightx = 0.6;
         JLabel nameLabel = new JLabel(v.getName() + " (" + v.getId() + ")");
         nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
@@ -151,7 +186,7 @@ public class TrainListPanel extends JPanel {
             purchase.setFirstClass(false);
             handleNavigation(); 
         });
-        
+
         rightPanel.add(secondClassBtn);
         System.out.println("Vonat szolgáltatások: " + v.getServices());
         if(v.getServices().contains(Train.FIRST_CLASS_TXT)){
@@ -169,6 +204,12 @@ public class TrainListPanel extends JPanel {
     }
 
 
+    /**
+     * Kezeli a helyfoglalás módjától függő navigációt.
+     * A választott elemtől függően a TicketMenu különböző nézeteihez
+     * navigál: automatikus helyfoglalás, attribútum alapú kiválasztás vagy
+     * grafikus helyfoglalás.
+     */
     private void handleNavigation() {
         String mode = (String) reserveSelector.getSelectedItem();
         System.out.println("Navigáció: " + mode);

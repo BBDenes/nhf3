@@ -5,6 +5,12 @@ import java.util.List;
 
 import javax.naming.NameNotFoundException;
 
+/**
+ * Vonat osztály.
+ * Minden vonat rendelkezik egyedi azonosítóval, névvel, típussal,
+ * kocsikkal, megállókkal és szolgáltatásokkal.
+ */
+
 public class Train {
     public static int ticketId = 1;
 
@@ -39,7 +45,9 @@ public class Train {
     public List<Stop> getStops(){return stops;}
     public List<String> getServices(){return services;}
 
-
+    /** Hozzáad egy kocsit a vonathoz
+     * @param c : A hozzáadandó kocsi
+     */
     public void addCoach(Coach c){
         if(c != null){
             this.coaches.add(c);
@@ -68,18 +76,15 @@ public class Train {
         }
     }
 
-    public Stop getStopFromName(String n)throws NameNotFoundException{
-        for (Stop s : this.stops) {
-            if(s.getName().equals(n)) return s;
-        }
-        throw new NameNotFoundException("Nincs ilyen megálló");
-    }
-
     @Override
     public String toString() {
         return id + " " + name + " "+ type + "- Kocsik: " + coaches.toString() + ", Megállók: " + stops.toString();
     }
 
+    /** Visszaadja a megadott nevű megállót
+     * @param stationName : A megálló neve
+     * @return : A megálló objektum, vagy null, ha nem található
+     */
     public Stop getStopByName(String stationName) {
         for (Stop s : this.stops) {
             if (s.getName().equalsIgnoreCase(stationName)) {
@@ -89,6 +94,7 @@ public class Train {
         return null; 
     }
 
+    /** Visszaállítja az összes kocsi foglalásait */
     public void resetReservations(){
         for (Coach c : this.coaches) {
             c.resetReservations();

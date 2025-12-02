@@ -52,7 +52,7 @@ public class Ticket implements Serializable{
             writer.write("<!DOCTYPE html>\n<html>\n<head>\n");
             writer.write("<meta charset='UTF-8'>\n");
             writer.write("<style>\n");
-            writer.write("  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f0f0; display: flex; justify-content: center; padding-top: 50px; }\n");
+            writer.write("  body { font-family: 'Segoe UI', sans-serif; background-color: #f0f0f0; display: flex; justify-content: center; padding-top: 50px; }\n");
             writer.write("  .ticket { background-color: white; width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; border-left: 10px solid #2ecc71; }\n");
             writer.write("  .header { background-color: #333; color: white; padding: 20px; text-align: center; }\n");
             writer.write("  .header h1 { margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; }\n");

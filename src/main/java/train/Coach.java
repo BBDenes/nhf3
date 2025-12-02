@@ -128,9 +128,12 @@ public class Coach{
 
     public int generateAvailableSeat() {
         Random rand = new Random();
+        if(reservedSeats.size() >= capacity){
+            throw new RuntimeException("Nincs több szabad hely a kocsiban");
+        }
         int szek;
         do {
-            szek = rand.nextInt(1, this.seats.size());
+            szek = rand.nextInt(1, this.seats.size()+1);
         } while (reservedSeats.contains(szek));
         return szek;
     }

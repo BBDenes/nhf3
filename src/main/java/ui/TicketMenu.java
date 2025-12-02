@@ -96,7 +96,7 @@ public class TicketMenu extends JDialog {
         nextButton.addActionListener(e -> {
             purchase.setStops((String)honnanBox.getSelectedItem(), (String)hovaBox.getSelectedItem());
             purchase.setPassengerNum((int) passengerNumSpinner.getValue());
-            switchToPanel(createPassengersMenu());
+            switchToPanel(renderPassengersMenu());
         });
         
         mainPanel.add(nextButton, gbc);
@@ -105,7 +105,11 @@ public class TicketMenu extends JDialog {
         currentPanel = mainPanel;
     }
 
-    public JPanel createPassengersMenu() {
+    public void createPassengersMenu() {
+        this.switchToPanel(renderPassengersMenu());
+    }
+
+    private JPanel renderPassengersMenu() {
         JPanel passengerPanel = new JPanel(new GridBagLayout());
         passengerPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
         passengerPanel.setBorder(new EmptyBorder(20, 20, 20, 20));

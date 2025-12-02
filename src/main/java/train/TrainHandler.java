@@ -20,6 +20,13 @@ import tickets.Reservation;
 import tickets.Ticket;
 import utilities.PurchaseController;
 
+/**
+ * A vonatkezelő osztály.
+ * Ez az osztály kezeli a vonatok adatait, foglalásait
+ * és bonyolítja le a tényleges helyfoglalásokat
+ * 
+ */
+
 public class TrainHandler {
 
     private final int seatPrice = 650; 
@@ -28,10 +35,6 @@ public class TrainHandler {
 
     private List<Train> trains;
     private static int ticketID;
-
-    //vásárláshoz
-
-
 
 
     public TrainHandler(){
@@ -43,17 +46,13 @@ public class TrainHandler {
         return trains;
     }
 
-
-    public void readTrains(String path){
-        //TODO: fájlbeolvasás
-        if(path == null){
-            
-            System.out.println("No trains added.");
-        }
-        this.trains.add(new Train(1, "ASD", "IC", new LinkedList<Coach>(), new LinkedList<Stop>()));
-        
-    }
-
+    /** Hozzáad egy új vonatot a rendszerhez, illetve elmenti a változást a fájlba
+     * @param id : A vonat azonosítója
+     * @param name : A vonat neve
+     * @param type : A vonat típusa
+     * @param coaches : A vonat kocsijai
+     * @param stops : A vonat megállói
+     */
     public void addTrain(int id, String name, String type, List<Coach> coaches, List<Stop> stops){
         for (Train t : this.trains) {
             if(t.getId() == id) throw new IllegalArgumentException("Már van ilyen azonosítóval vonat!");
@@ -79,7 +78,10 @@ public class TrainHandler {
         return selectedTrains;
     }
 
-
+    /** Visszaad egy vonatot az azonosítója alapján
+     * @param id : A vonat azonosítója
+     * @return : A vonat, null ha nincs ilyen
+     */
     public Train getTrainByIndex(int id){
         for (Train t : this.trains) {
             if(t.getId() == id) return t;
@@ -87,6 +89,12 @@ public class TrainHandler {
         return null;
     }
 
+    /** Visszaad egy véletlenszerű szabad helyet a megadott osztályon a megadott vonaton
+     * @param trainId : A vonat azonosítója
+     * @param isFirstClass : Igaz, ha elsőosztályú jegyet szeretnénk
+     * @return : Tömb, első elem a kocsi, második a szék azonosítója
+     * @throws Exception : Ha nincs szabad hely a megadott osztályon
+     */
     public int[] getRandom(int trainId, boolean isFirstClass) throws Exception{
         Train currentTrain = this.getTrainByIndex(trainId);
         List<Coach> validCoaches = new ArrayList<>();
@@ -114,7 +122,10 @@ public class TrainHandler {
 
     }
 
-
+    /** Lefoglalja a megadott jegyeket automatikusan a megadott vásárlásvezérlő alapján
+     * @param p : A vásárlásvezérlő
+     * @throws Exception : Ha nincs elérhető hely a megadott feltételekkel
+     */
     public void reserveAutomaticSeats(PurchaseController p) throws Exception {
         
         List<String> pNames = p.getPassengerNames();
@@ -132,8 +143,14 @@ public class TrainHandler {
         }
 
     }
-    
-private void buyTicket(PurchaseController p, String passengerName, String passId, int[] seat) {
+
+    /** Lefoglal egy jegyet a megadott adatok alapján
+     * @param p : A vásárlásvezérlő
+     * @param passengerName : Az utas neve
+     * @param passId : Az utas bérlet azonosítója (ha nincs, üres String)
+     * @param seat : Tömb, első elem a kocsi, második a szék azonosítója
+     */
+    private void buyTicket(PurchaseController p, String passengerName, String passId, int[] seat) {
         Train t = getTrainByIndex(p.getTrainId());
         boolean isFirstClass = p.isFirstClass();
         String fromStation = p.getStops().get(0);
@@ -171,6 +188,14 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         p.getTicketsToBuy().add(newTicket);
     }
 
+    /** Visszaad egy véletlenszerű szabad helyet a megadott osztályon a megadott vonaton a megadott feltételek alapján
+     * @param trainId : A vonat azonosítója
+     * @param isFirstClass : Igaz, ha elsőosztályú jegyet szeretnénk
+     * @param wantsAccessible : Igaz, ha akadálymentes helyet szeretnénk
+     * @param wantsBycicle : Igaz, ha kerékpárhelyet szeretnénk
+     * @return : Tömb, első elem a kocsi, második a szék azonosítója
+     * @throws Exception : Ha nincs szabad hely a megadott osztályon a megadott feltételekkel
+     */
     private int[] getSeatByAttribute(int trainId, boolean isFirstClass, boolean wantsAccessible, boolean wantsBycicle) throws Exception{
         List<Coach> validCoaches = new ArrayList<>();
         
@@ -201,6 +226,9 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         
     }
 
+    /** Lefoglalja a megadott jegyeket konkrét helyekre a megadott vásárlásvezérlő alapján
+     * @param p : A vásárlásvezérlő
+     */
     public void reserveSpecificSeats(PurchaseController p) {
 
         List<Integer> globalSeatIds = p.getSeatsToReserve();
@@ -218,19 +246,20 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         }
     }
 
+    /** Véglegesíti a foglalást a megadott vásárlásvezérlő alapján
+     * @param p : A vásárlásvezérlő
+     */
     public void finalizeBooking(PurchaseController p) {
         List<Ticket> tickets = p.getTicketsToBuy();
         Train train = getTrainByIndex(p.getTrainId()); // A vonat, amire foglalunk
 
         for (Ticket t : tickets) {
-            // Csak akkor kell széket állítani, ha ez egy Reservation (Helyjegy)
             if (t instanceof Reservation) {
                 Reservation res = (Reservation) t;
                 
-                // Megkeressük a kocsit ID alapján
                 Coach targetCoach = null;
                 for (Coach c : train.getCoaches()) {
-                    if (c.getId() == res.getCoach()) { // Feltételezve, hogy a Reservation tárolja a kocsi ID-t
+                    if (c.getId() == res.getCoach()) { 
                         targetCoach = c;
                         break;
                     }
@@ -249,7 +278,7 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         System.out.println("Adatok sikeresen frissítve és elmentve.");
     }
 
-
+    /** Menti az adatokat JSON fájlba */
     public void saveTrainsToJson() {
         try (Writer writer = new FileWriter(DB_FILE)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -262,6 +291,7 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         }
     }
 
+    /** Betölti az adatokat JSON fájlból */
     public void loadTrainsFromJson() {
         File file = new File(DB_FILE);
         if (!file.exists()) {
@@ -289,7 +319,7 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         }
     }
 
-
+    /** Törli a megadott azonosítójú vonatot */
     public void deleteTrainByIndex(int id) {
         int ind = -1;
         for (int i = 0; i < this.trains.size(); i++) {
@@ -300,7 +330,7 @@ private void buyTicket(PurchaseController p, String passengerName, String passId
         saveTrainsToJson();
     }
 
-
+    /** Visszaállítja a foglalásokat a megadott azonosítójú vonaton */
     public void resetReservation(int id) {
         int ind = -1;
         for (int i = 0; i < this.trains.size(); i++) {

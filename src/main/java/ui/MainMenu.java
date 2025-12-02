@@ -10,7 +10,10 @@ import javax.swing.*;
 import train.TrainHandler;
 import utilities.PurchaseController;
 
-
+/**
+ * Főmenü ablak.
+ * Két gombot tartalmaz, a jegyvásáláshoz és a vonatok szerkesztéséhez.
+ */
 
 public class MainMenu extends JFrame {
     private JButton buyTicketButton;
@@ -29,9 +32,12 @@ public class MainMenu extends JFrame {
         
     }
     
+    /**
+     * Megjeleníti a főmenüt
+     * @param th : A vonatkezelő példány
+     */
     private void renderMainMenu(TrainHandler th){
         
-        //TODO: Fájl menü, ahol id szerint lehet törölni a vonatot
         JPanel menuPanel = new JPanel(new GridBagLayout());
         menuPanel.setBackground(new Color(45, 45, 45));
         

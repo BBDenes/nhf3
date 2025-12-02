@@ -1,4 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,13 +18,16 @@ import utilities.*;
 public class TicketSystemUnitTests {
 
     private TrainHandler trainHandler;
+    private PurchaseController purchase;
     private Train testTrain;
+    private List<Stop> stops;
 
    @BeforeEach
     void setUp() {
         trainHandler = new TrainHandler();
+        purchase = new PurchaseController();
         
-        List<Stop> stops = new ArrayList<>();
+        stops = new ArrayList<>();
         stops.add(new Stop("Budapest", new Time(8, 0), new Time(8, 10)));
         stops.add(new Stop("Szolnok", new Time(9, 0), new Time(9, 5)));
         stops.add(new Stop("Debrecen", new Time(10, 0), new Time(10, 10)));
@@ -93,7 +98,6 @@ public class TicketSystemUnitTests {
         trainHandler.reserveAutomaticSeats(p);
 
         Ticket t = p.getTicketsToBuy().get(0);
-        // Ár: Csak helyjegy (650)
         assertEquals(650, t.getPrice());
     }
 
@@ -101,30 +105,25 @@ public class TicketSystemUnitTests {
     void testReserveAutomatic_1stClass_NoPass() throws Exception {
         PurchaseController p = new PurchaseController();
         p.setTrain(101);
-        p.setFirstClass(true); // Első osztály
+        p.setFirstClass(true);
         p.setStops("Budapest", "Szolnok");
         p.setPassengers(List.of("Utas1"), List.of(""));
 
         trainHandler.reserveAutomaticSeats(p);
 
         Ticket t = p.getTicketsToBuy().get(0);
-        // Ár: 2*650 (hely) + 2*1000 (menet) = 3300
         assertEquals(3300, t.getPrice());
     }
 
     @Test
     void testGetRandom_Success() throws Exception {
-        // 2. osztályú helyet kérünk
         int[] seatInfo = trainHandler.getRandom(101, false);
         
-        // A 2-es ID-jú kocsi a másodosztályú a setup-ban
         assertEquals(2, seatInfo[0]); 
-        // Szék számának 1 és 20 között kell lennie
         assertTrue(seatInfo[1] >= 1 && seatInfo[1] <= 20);
     }
 
     @Test
-    //telerakjuk az 1.o kocsit, aztán megpróválunk még egy jegyet venni oda
     void testGetRandom_FullTrain_ThrowsException() {
         Coach c1 = testTrain.getCoaches().get(0);
         for(int i=1; i<=10; i++) c1.addTicket(new Reservation(i, testTrain.getId(), 0, " ", new Stop("T1;1:1;1:1"), new Stop("T2;2:2;2:2"), c1.getId(), i, null));
@@ -138,7 +137,6 @@ public class TicketSystemUnitTests {
 
     @Test
     void testAttributeSearch_Bicycle() throws Exception {
-        // Vásárlás: 1 fő, 1. osztály (ID:1), kér biciklit (Van 5 hely)
 
 
         PurchaseController p = new PurchaseController();
@@ -158,20 +156,16 @@ public class TicketSystemUnitTests {
 
     @Test
     void testAttributeSearch_Wheelchair_Fail() {
-        // Vásárlás: 1 fő, 1. osztály, kér kerekesszéket
-        // A setupban az 1. osztályon (ID:1) NINCS kerekesszék hely (0)!
         PurchaseController p = new PurchaseController();
         p.setTrain(101);
         p.setFirstClass(true); 
         p.setPassengers(List.of("Kerekesszékes"), List.of(""));
-        p.setMasks(List.of(true), List.of(false)); // acc=true
+        p.setMasks(List.of(true), List.of(false));
 
-        // Hibát várunk
         Exception exception = assertThrows(Exception.class, () -> {
             trainHandler.reserveAutomaticSeats(p);
         });
         
-        // A hibaüzenet (amit a kódod dob a getSeatByAttribute-ban)
         assertTrue(exception.getMessage().contains("Nincs ilyen kocsiii")); // Vagy amit javítottál
     }
 
@@ -190,22 +184,177 @@ public class TicketSystemUnitTests {
         p.setStops("A", "B");
         p.setPassengers(List.of("Bérletes"), List.of("PASS-123"));
 
-        // Foglalás indítása (itt a buyTicket else ága fut le)
-        // Mivel manuálisan hívjuk a buyTicket-et a reserveAutomaticSeats-en keresztül,
-        // de személyvonatnál nincs helyfoglalás, így a getRandom elvileg nem hívódik meg?
-        // VIGYÁZAT: A te kódodban a reserveAutomaticSeats MINDIG hív getRandom-ot.
-        // Ez hiba lehet személyvonatnál, mert ott nincs helyjegy!
-        // De a teszt célja a 'buyTicket' logikája:
         
-        // Mivel a te kódodban a személyvonatnál nincs "else" ág a reserveAutomaticSeats-ben,
-        // ez a teszt valószínűleg elhasalna a getRandom() miatt. 
-        // De tegyük fel, hogy a getRandom ad vissza valamit (pl 0,0).
+    }
+
+    @Test
+    void testGetGlobalSeatId() {
+        // Ha a kocsi ID=5 és a szék=42, a képlet: 5 * 1000 + 42 = 5042
+        int globalId = purchase.getGlobalSeatId(5, 42);
+        assertEquals(5042, globalId, "A globális ID számítása hibás");
+    }
+
+    @Test
+    void testGetSeatFromGlobalId() {
+        int globalId = 5042;
+        int[] result = purchase.getSeatFromGlobalId(globalId);
         
-        // A buyTicket metódusban van a return; ha bérletes.
-        // Ezt teszteljük úgy, hogy a listának üresnek kell lennie.
+        assertEquals(5, result[0], "A kocsi ID visszafejtése hibás");
+        assertEquals(42, result[1], "A szék ID visszafejtése hibás");
+    }
+
+    @Test
+    void testConstructorFromString_ValidInput() {
+        String input = "10;50;5;2;1;0"; 
+        Coach c = new Coach(input);
+
+        assertEquals(10, c.getId());
+        assertEquals(50, c.getCapacity());
+        assertTrue(c.isFirstClass());
+        assertFalse(c.isBuffetCar());
+        assertEquals(5, c.getBicycleCapacity());
+    }
+
+    @Test
+    void testConstructorFromString_InvalidInput() {
+        String badInput = "10;randomcucc;káélákasd";
+        assertThrows(NumberFormatException.class, () -> {
+            new Coach(badInput);
+        });
+    }
+
+    @Test
+    void testAddTicket_UpdatesAvailability() {
+        Coach c = new Coach(1, 10, 0, 0, false, false);
+        int initialAvailable = c.getAvailable();
+
+        Reservation res = new Reservation(99, 100, 500, "Gajdos Sándor", stops.get(0), stops.get(1), 1, 1, "");
+        c.addTicket(res);
+
+        assertEquals(initialAvailable - 1, c.getAvailable(), "A szabad helyek számának csökkennie kell");
+        assertTrue(c.getReservedSeatIds().contains(1), "Az 1-es széknek foglaltnak kell lennie");
+    }
+
+
+    @Test
+    void testAddTicket_WhenFull_ThrowsException() {
+        // Kicsi kocsi: 1 hely
+        Coach c = new Coach(1, 1, 0, 0, false, false);
         
-        // Mivel a reserveAutomaticSeats hívja a buyTicket-et, és az nem ad hozzá a listához:
-        // p.getTicketsToBuy().size() == 0 kell legyen.
+        // Első foglalás (Sikerül)
+        Reservation r1 = new Reservation(1, 1, 500, "A", stops.get(0), stops.get(1), 1, 1, null);
+        c.addTicket(r1);
+
+        // Második foglalás (Ugyanoda vagy tele kocsiba -> Hiba)
+        Reservation r2 = new Reservation(2, 1, 500, "B", stops.get(0), stops.get(1), 1, 1, null); // 1-es szék már foglalt
+        
+        assertThrows(RuntimeException.class, () -> {
+            c.addTicket(r2);
+        }, "Tele lévő kocsinál hibát kell dobni");
+    }
+
+    @Test
+    void testGenerateAvailableSeat() {
+        Coach c = new Coach(1, 50, 0, 0, false, false);
+        for(int i=1; i<50; i++) {
+            c.getReservedSeatIds().add(i); 
+        }
+        
+        // Csak az 50-es szabad
+        int seat = c.generateAvailableSeat();
+        assertEquals(50, seat, "Csak az 50-es szék szabad, azt kellene visszaadnia");
+    }
+
+    @Test
+    void testTimeBadInput() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Time("25:61");
+        });
+    }
+
+    @Test
+    void testDeleteTrainByIndex_Success() {
+        assertEquals(1, trainHandler.getTrains().size());
+
+        trainHandler.deleteTrainByIndex(101);
+
+        assertTrue(trainHandler.getTrains().isEmpty());
+    }
+
+    @Test
+    void testDeleteTrainByIndex_NotFound_ThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            trainHandler.deleteTrainByIndex(999);
+        });
+        
+        assertEquals(1, trainHandler.getTrains().size());
+    }
+
+    @Test
+    void testResetReservation_Success() {
+        
+        purchase.setTrain(101);
+        purchase.setSeatsToReserve(List.of(1));
+        purchase.setPassengers(List.of("Utas1"), List.of(""));
+        purchase.setStops("Budapest", "Szolnok");
+        trainHandler.reserveSpecificSeats(purchase);
+        trainHandler.resetReservation(101);
+
+        assertFalse(trainHandler.getTrainByIndex(101).getCoaches().get(0).getReservedSeatIds().contains(1), "A reset után a széknek szabadnak kell lennie");
+    }
+
+    @Test
+    void testReserveSpecificSeats() {
+        PurchaseController p = new PurchaseController();
+        p.setTrain(101);
+        p.setFirstClass(true);
+        p.setStops("Budapest", "Debrecen"); // Érvényes megállók
+        p.setPassengers(List.of("Kovács Béla"), List.of("")); // 1 utas, nincs bérlet
+
+        // Kézzel beállítjuk a választott széket (Kocsi ID: 1, Szék: 5)
+        // Global ID számítás: 1 * 1000 + 5 = 1005 (ha a te logikád ez)
+        // VAGY ha a PurchaseController getGlobalSeatId-t használod:
+        int globalId = p.getGlobalSeatId(1, 5);
+        p.setSeatsToReserve(List.of(globalId));
+
+        // Metódus hívása
+        trainHandler.reserveSpecificSeats(p);
+
+        // Ellenőrzés: Bekerült-e a jegy a kosárba?
+        List<Ticket> tickets = p.getTicketsToBuy();
+        assertEquals(1, tickets.size());
+        
+        Ticket t = tickets.get(0);
+        assertTrue(t instanceof Reservation);
+        Reservation res = (Reservation) t;
+        
+        assertEquals("Kovács Béla", res.getPassengerName());
+        assertEquals(1, res.getCoach()); // Jó kocsi
+        assertEquals(5, res.getSeat());  // Jó szék
+    }
+
+    @Test
+    void testFinalizeBooking_SeatStatusUpdate() {
+
+        PurchaseController p = new PurchaseController();
+        p.setTrain(101);
+        p.setStops("Budapest", "Debrecen");
+        
+        Stop s1 = testTrain.getStopByName("Budapest");
+        Stop s2 = testTrain.getStopByName("Debrecen");
+        Reservation res = new Reservation(999, 101, 1000, "Gajdos Sándor", s1, s2, 1, 3, null);
+        
+        p.addTicketToBuy(res);
+
+        // 2. Kocsi állapotának ellenőrzése ELŐTTE
+        Coach targetCoach = testTrain.getCoaches().get(0); // ID: 1
+        assertFalse(targetCoach.getReservedSeatIds().contains(3), "A 3-as széknek szabadnak kell lennie kezdetben");
+
+        // 3. Finalize hívása
+        trainHandler.finalizeBooking(p);
+
+        // 4. Kocsi állapotának ellenőrzése UTÁNA
+        assertTrue(targetCoach.getReservedSeatIds().contains(3), "A finalize után a 3-as széknek foglaltnak kell lennie!");
     }
 
 }

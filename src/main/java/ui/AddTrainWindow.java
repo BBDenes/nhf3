@@ -31,6 +31,10 @@ public class AddTrainWindow extends JDialog {
         renderWindow();
     }
 
+
+    /**
+     * Megjeleníti a vonatkezelő ablakot
+     */
     private void renderWindow() {
         JPanel topPanel = new JPanel(new GridBagLayout());
         topPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
@@ -81,6 +85,10 @@ public class AddTrainWindow extends JDialog {
         renderFooterSection();
     }
 
+    /**
+     * Megjeleníti az alapvető vonat információk mezőit(ID, név, típus)
+     * @param p : A panel, amire az elemek kerülnek
+     */
     private void renderBasicInfo(JPanel p) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -121,6 +129,18 @@ public class AddTrainWindow extends JDialog {
         typeSelect = new JComboBox<>(trainTypes);
         p.add(typeSelect, gbc);
     }
+
+    /**
+     * Létrehoz egy szekciót (a kocsik vagy az állomások bevitelére)
+     * @param title : A szekció címe
+     * @param model : A lista modellje
+     * @param listUI : A lista UI komponense
+     * @param hint : A bemeneti mező hint szövege
+     * @param inputField : A bemeneti mező
+     * @param onAdd : Hozzáadás eseménye
+     * @param onRemove : Eltávolítás eseménye
+     * @return : A létrehozott JPanel
+     */
     private JPanel createSectionPanel(String title, DefaultListModel<String> model, JList<String> listUI, 
                                       String hint, JTextField inputField, 
                                       ActionListener onAdd, ActionListener onRemove) {
@@ -152,7 +172,6 @@ public class AddTrainWindow extends JDialog {
 
         bottomPart.add(inputField, g);
 
-        // Gombok
         JPanel btnPanel = createButtonPanel("+ Hozzáad", "- Töröl", onAdd, onRemove);
         bottomPart.add(btnPanel, g);
 
@@ -160,6 +179,11 @@ public class AddTrainWindow extends JDialog {
 
         return panel;
     }
+
+    /** Eltávolít egy elemet a listából a kiválasztott index alapján
+     * @param model : A lista medellje
+     * @param listUI : A lista UI komponense
+     */
     private void removeFromList(DefaultListModel<String> model, JList<String> listUI) {
         int selectedIndex = listUI.getSelectedIndex();
         if (selectedIndex != -1) {
@@ -167,6 +191,13 @@ public class AddTrainWindow extends JDialog {
         }
     }
 
+    /** Létrehoz egy gomb panelt hozzáadás és eltávolítás műveletekhez
+     * @param addText : A hozzáadás gomb szövege
+     * @param removeText : Az eltávolítás gomb szövege
+     * @param onAdd : Hozzáadás eseménye
+     * @param onRemove : Eltávolítás eseménye
+     * @return : A létrehozott JPanel
+     */
     private JPanel createButtonPanel(String addText, String removeText, ActionListener onAdd, ActionListener onRemove) {
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         p.setBackground(ModernComponents.BACKGROUND_COLOR);
@@ -188,6 +219,7 @@ public class AddTrainWindow extends JDialog {
         return p;
     }
 
+    /** Megjeleníti az ablak láblécét a mentés, mégsem, vonat törlése, vonat visszaállítása gombokkal */
     private void renderFooterSection() {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
@@ -242,7 +274,7 @@ public class AddTrainWindow extends JDialog {
         add(bottomPanel, BorderLayout.SOUTH);
     }
 
-
+    /** Hozzáad egy kocsit a listához és a modellhez */
     private void coachAddListener(DefaultListModel<String> model,  JTextField sourceField){
         String text = sourceField.getText();
         if (text != null && !text.trim().isEmpty()) {
@@ -260,6 +292,7 @@ public class AddTrainWindow extends JDialog {
         }
     }
 
+    /** Hozzáad egy megállót a listához és a modellhez */
     private void stopAddListener(DefaultListModel<String> model,  JTextField sourceField){
         String text = sourceField.getText();
         if (text != null && !text.trim().isEmpty()) {

@@ -11,13 +11,20 @@ import train.Train;
 import train.TrainHandler;
 import utilities.PurchaseController;
 
+
+/*
+*   Panel a grafikus helyfoglaláshoz.
+*   A panel generál a fejlécben egy listát, ahonnan kocsit lehet választani,
+*   valamint a kocsi üléseit kirajzolja, ahonnan lehet válazstani.
+*
+*/
+
 public class VisualSeatPanel extends JPanel {
 
     private TicketMenu controller;
     private TrainHandler trainHandler;
     private PurchaseController purchase;
 
-    // Ezeket a változókat áthoztuk ide, mert csak ehhez a nézethez kellenek
     private JPanel seatMapPanel;
     private JLabel coachInfoLabel;
     private List<Integer> reservedSeatIds = new ArrayList<>();
@@ -33,12 +40,14 @@ public class VisualSeatPanel extends JPanel {
         initUI();
     }
 
+    /**
+     * Inicializálja a panelt
+     */
     private void initUI() {
         Train train = trainHandler.getTrainByIndex(purchase.getTrainId());
         int trainId = purchase.getTrainId();
         boolean isFirstClass = purchase.isFirstClass();
 
-        // --- FEJLÉC ---
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         headerPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
         
@@ -48,10 +57,8 @@ public class VisualSeatPanel extends JPanel {
         headerPanel.add(title);
         add(headerPanel, BorderLayout.NORTH);
 
-        // --- KÖZÉP (Kocsi választó + Ülés térkép) ---
         JPanel centerContainer = new JPanel(new BorderLayout());
         
-        // Felső sáv (Kocsik)
         JPanel topWrapper = new JPanel(new BorderLayout());
         topWrapper.setBackground(ModernComponents.BACKGROUND_COLOR);
 
@@ -90,7 +97,7 @@ public class VisualSeatPanel extends JPanel {
         topWrapper.add(coachInfoLabel, BorderLayout.SOUTH);
         centerContainer.add(topWrapper, BorderLayout.NORTH);
 
-        // Ülés térkép panel
+        // Ülés térkép
         seatMapPanel = new JPanel();
         seatMapPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
         seatMapPanel.setLayout(new GridBagLayout());
@@ -102,16 +109,12 @@ public class VisualSeatPanel extends JPanel {
 
         add(centerContainer, BorderLayout.CENTER);
 
-        // --- LÁBLÉC (Gombok) ---
         JPanel footer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         footer.setBackground(ModernComponents.BACKGROUND_COLOR);
         
         JButton btnCancel = ModernComponents.createModernButton("Mégse", Color.GRAY, Color.WHITE);
         btnCancel.addActionListener(e -> {
             reservedSeatIds.clear();
-            // Visszahívunk a controllerbe, hogy jelenítse meg a vonatlistát
-            // Ehhez a TicketMenu-ben lennie kell egy showTrainListPanel metódusnak (vagy hasonló)
-            // Itt most újra keresünk, hogy visszakapjuk a listát
             List<Train> results = trainHandler.searchTrains(purchase.getStops().get(0), purchase.getStops().get(1));
             controller.showTrainListPanel(results); 
         });
@@ -132,7 +135,7 @@ public class VisualSeatPanel extends JPanel {
             try {
                 trainHandler.reserveSpecificSeats(purchase);
                 JOptionPane.showMessageDialog(this, "Sikeres foglalás!");
-                controller.showSummaryPanel(); // Átlépés az összegzésre
+                controller.showSummaryPanel();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Hiba: " + ex.getMessage());
             }
@@ -141,17 +144,22 @@ public class VisualSeatPanel extends JPanel {
         footer.add(advanceBtn);
         add(footer, BorderLayout.SOUTH);
 
-        // Kezdőállapot betöltése
         if (firstValidCoach != null) {
             renderSeatMap(firstValidCoach, trainId, isFirstClass);
         }
     }
 
+    /**
+     * Kirajzolja a megadott kocsi üléseit
+     * @param c : A kocsi, amelyet ki kell rajzolni
+     * @param trainId : A vonat azonosítója
+     * @param isFirstClass : Igaz, ha elsőosztályú jegyet szeretnénk
+     */
     private void renderSeatMap(Coach c, int trainId, boolean isFirstClass) {
         String osztaly = c.isFirstClass() ? "1. Osztály" : "2. Osztály";
         coachInfoLabel.setText("Jelenlegi kocsi: " + c.getId() + ". számú kocsi (" + osztaly + ")");
         
-        seatMapPanel.removeAll(); // Törlés újrarajzolás előtt
+        seatMapPanel.removeAll();
 
         int rows = (int) Math.ceil((double) c.getCapacity() / 4);
         JPanel grid = new JPanel(new GridLayout(rows, 5, 10, 10));
@@ -175,16 +183,15 @@ public class VisualSeatPanel extends JPanel {
                     boolean isSelected = reservedSeatIds.contains(globalSeatId);
                     
                     if (isSelected) {
-                        seatBtn.setBackground(ModernComponents.BUTTON_COLOR); // Eredeti szín visszaállítása
+                        seatBtn.setBackground(ModernComponents.BUTTON_COLOR); 
                         reservedSeatIds.remove(Integer.valueOf(globalSeatId));
                     } else {
                         reservedSeatIds.add(Integer.valueOf(globalSeatId));
-                        seatBtn.setBackground(seatBtn.getBackground().darker().darker()); // Kijelölt szín
+                        seatBtn.setBackground(seatBtn.getBackground().darker().darker());
                     }
                     
                 });
                 
-                // Ha már korábban kiválasztottuk (pl. kocsiváltás után visszajövünk), színezzük be
                 int globalSeatId = purchase.getGlobalSeatId(c.getId(), i);
                 if (reservedSeatIds.contains(globalSeatId)) {
                     seatBtn.setBackground(ModernComponents.BUTTON_COLOR.darker().darker());

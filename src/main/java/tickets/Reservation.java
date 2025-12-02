@@ -2,6 +2,11 @@ package tickets;
 
 import train.Stop;
 
+
+/** Helyjegy osztály
+ * A Ticket osztálynak ad plusz helyfoglalási információkat(szék-, kocsiszám, bérlet azonosító)
+ */
+
 public class Reservation extends Ticket{
     public enum Type {
         WITH_PASS,
@@ -37,6 +42,10 @@ public class Reservation extends Ticket{
         return "Másodosztályú helyjegy";
     }
 
+    /** Visszaadja a jegyhez tartozó extra HTML részleteket(A bérlet és a hely adatai)
+     * @return A jegy extra részletei HTML formátumban
+     */
+    @Override
     protected String getExtraDetails() {
         StringBuilder sb = new StringBuilder();
         

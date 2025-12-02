@@ -11,6 +11,16 @@ import tickets.Ticket;
 import tickets.Reservation;
 import utilities.PurchaseController;
 
+/**
+ * Panel a vásárlás összegzésére és a tranzakció befejezésére.
+ *
+ * A panel megjeleníti a kiválasztott jegyek összegzését, beleértve az utasok
+ * nevét, jegytípusát, helyadatait és árát. A felhasználó itt fejezheti be a
+ * vásárlást, amely után a jegyek HTML fájlokba kerülnek mentésre.
+ *
+ * A panel egy TicketMenu vezérlőt, egy TrainHandler-t és a PurchaseController-t
+ * használja a vásárlási adatok kezelésére és a tranzakció végrehajtására.
+ */
 public class SummaryPanel extends JPanel {
 
     private TicketMenu controller;
@@ -28,6 +38,10 @@ public class SummaryPanel extends JPanel {
         initUI();
     }
 
+    /**
+     * Inicializálja a jegyeket összegző panel elemeit.
+     * Létrehozza a fejlécet, a jegyek listáját és a láblécet a végösszeggel
+     */
     private void initUI() {
         JPanel headerPanel = new JPanel(new GridBagLayout());
         headerPanel.setBackground(ModernComponents.BACKGROUND_COLOR);
@@ -114,6 +128,11 @@ public class SummaryPanel extends JPanel {
         add(footerPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Létrehoz egy jegy kártyát a megadott jegy adataival.
+     * @param t : A megjelenítendő jegy
+     * @return Egy JPanel, amely a jegy adatait tartalmazza
+     */
     private JPanel createTicketCard(Ticket t) {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(new Color(60, 63, 65));
@@ -158,6 +177,10 @@ public class SummaryPanel extends JPanel {
         return card;
     }
 
+    /**
+     * Függvény a vásárlás befejezésére.
+     * Meghívja a vonatkezelő foglaló függvényét, majd menti a jegyeket egy-gy HTML fájlba
+     */
     private void finalizePurchase() {
         trainHandler.finalizeBooking(purchase);
         for (Ticket t : purchase.getTicketsToBuy()) {
